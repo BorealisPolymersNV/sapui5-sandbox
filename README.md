@@ -12,18 +12,3 @@ grunt serve
 
 Test with: http://localhost:8080/testsuite/
 
-
-Setup SAPUI5
-------------
-
-```
-#mv sap-ui-core.js sapui5/resources/
-
-mkdir openui-runtime; cd openui-runtime
-wget https://openui5.hana.ondemand.com/downloads/openui5-runtime-1.34.8.zip
-unzip openui5-runtime-1.34.8.zip
-
-mkdir -p $INST/sapui5
-mv resources $INST/sapui5/
-```
-
