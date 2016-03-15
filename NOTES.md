@@ -110,23 +110,6 @@ SELECT distinct [idFactory]
 ORDER BY
 ShiftDataPrev.shiftClosedAt DESC
 
-View
------
-
-
-SELECT        TOP (20000) dbo.ShiftData.idFactory AS shiftIdFactory, dbo.ShiftData.idShiftData AS ID, dbo.ShiftData.plannedShiftStart AS PlanShiftStart, 
-                         dbo.ShiftData.plannedShiftEnd AS PlanShiftEnd, ShiftDataPrev.shiftClosedAt AS ShiftStart, dbo.ShiftData.shiftClosedAt AS ShiftEnd, 
-                         dbo.ShiftData.shiftClosedBy AS ClosedBy, dbo.ShiftConfig.ShiftName, team.teamName, Logbook.name AS Logbook, Logbook.isMainLogBook, 
-                         dbo.ShiftData.shiftClosedByFullName, dbo.ShiftData.HandOverToPerson, dbo.ShiftData.tagReportDataKey, dbo.ShiftData.tagReportID, dbo.ShiftData.tagComment, 
-                         dbo.ShiftData.shiftClosed, Logbook.site, dbo.ShiftData.idShiftDefinition
-FROM            dbo.ShiftData LEFT OUTER JOIN
-                         dbo.ShiftData AS ShiftDataPrev ON dbo.ShiftData.plannedShiftStart = ShiftDataPrev.plannedShiftEnd AND 
-                         dbo.ShiftData.idFactory = ShiftDataPrev.idFactory LEFT OUTER JOIN
-                         dbo.Factory AS Logbook ON Logbook.idFactory = dbo.ShiftData.idFactory LEFT OUTER JOIN
-                         dbo.ShiftConfig ON dbo.ShiftConfig.idShiftConfig = dbo.ShiftData.idShiftDefinition LEFT OUTER JOIN
-                         dbo.Team AS team ON team.idFactory = dbo.ShiftData.idFactory AND team.idTeam = dbo.ShiftData.idTeam
-WHERE        (dbo.ShiftData.plannedShiftStart < GETDATE() + 20) AND (dbo.ShiftData.plannedShiftStart > GETDATE() - 200)
-
 
 
 My solution
@@ -159,7 +142,31 @@ GO
 
 EXEC sp_max_shift_closed_at;
 
-----
+
+My principal approach
+---------------------
+
+select * from TESTDATA_shiftData shiftData, TESTDATA_shiftData shiftDataPrev
+where shiftData.shiftClosedAt > shiftDataPrev.shiftClosedAt
+order by shiftData.idShiftData
+
+
+Final solution using a stored procedure
+----------------------------------------
+
+-- ================================================
+-- spShiftActualStartAndEnd
+-- Author:			Jonas Colmsjö
+-- Created:			2016-03-15
+-- Description:		Complement shiftData with a column showing the actual start date and time
+--					for the shift. The actual start date and time is the actual end date and time
+--					for the shift ending before the shift. The parameters @startDate, @endDate are 
+--					necessary to keep the performance desent. Intervalls of 30 days are handled in 
+--					less than 10 seconds.
+--
+--					NOTE: The first row which which do not have any start time and date (since there 
+--					is not shift before) is **not** included the result set.
+-- ================================================
 
 USE [SAPMII_ESLB-Sandbox1]
 
@@ -194,8 +201,8 @@ BEGIN
 		select idFactory, idShiftData, idShiftDefinition, shiftClosedAt
 		from shiftData
 		where idFactory = @idFactory
-		and shiftClosedAt > @startDate
-		and shiftClosedAt < @endDate
+		and shiftClosedAt >= @startDate
+		and shiftClosedAt <= @endDate
 		and shiftClosed = 1
 		order by idShiftData
 
