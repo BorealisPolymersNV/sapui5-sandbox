@@ -128,28 +128,7 @@ FROM            dbo.ShiftData LEFT OUTER JOIN
 WHERE        (dbo.ShiftData.plannedShiftStart < GETDATE() + 20) AND (dbo.ShiftData.plannedShiftStart > GETDATE() - 200)
 
 
-Data from produktion
---------------------
 
-
-/****** Script for SelectTopNRows command from SSMS  ******/
-SELECT TOP 1000 [idFactory]
-      ,[idShiftData]
-      ,[idShiftDefinition]
-      ,[idTeam]
-      ,[plannedShiftStart]
-      ,[plannedShiftEnd]
-      ,[shiftClosed]
-      ,[shiftClosedBy]
-      ,[shiftClosedAt]
-      ,[idShiftCycle]
- 
-  FROM [SAPMII_ESLB-T].[dbo].[ShiftData] where idFactory = 63 
-  order by plannedShiftEnd
-  
-  
-  
-  
 My solution
 -----------
 
@@ -180,39 +159,7 @@ GO
 
 EXEC sp_max_shift_closed_at;
 
-
----
-
-select sd.idFactory, 
-		sd.idShiftData, 
-		sd.idShiftDefinition, 
-		sd.idTeam, 
-		sd.plannedShiftStart, 
-		sd.PlannedShiftEnd, 
-		sd.shiftClosed, 
-		sd.shiftClosedType,
-		sd.createdBy,
-		sd.createdAt,
-		sd.shiftClosedBy,
-		sd.shiftClosedAt,
-		sd.HandOverRawData,
-		sd.HandOverReportData,
-		sd.idShiftCycle,
-		sd.tagComment,
-		sd.tagReportID,
-		sd.tagReportDataKey,
-		sd.HandOverToPerson,
-		sd.shiftClosedByFullName,
-		sdp.shiftClosedAt as shiftStartedAt
-	from shiftData sd, shiftData sdp
-	where sd.shiftClosedAt > sdp.shiftClosedAt 
-		and sd.idFactory = sdp.idFactory
-		and datediff(day, sd.shiftClosedAt, sdp.shiftClosedAt) <= 2		-- look max two days back
-		and sd.idFactory = 63
-	order by idShiftData
-    
-    
----
+----
 
 USE [SAPMII_ESLB-Sandbox1]
 
@@ -221,7 +168,7 @@ GO
 SET QUOTED_IDENTIFIER ON
 GO
 
-ALTER PROCEDURE spShiftActualStartAndEnd
+ALTER PROCEDURE spShiftActualStartAndEnd (@idFactory int, @startDate Datetime, @endDate Datetime)
 AS
 BEGIN
 	SET NOCOUNT ON;
@@ -229,93 +176,47 @@ BEGIN
 	declare @tmpShiftData Table (idFactory int,
 		idShiftData int, 
 		idShiftDefinition int, 
-		shiftClosedAt Datetime,
-		idTeam int, 
-		plannedShiftStart Datetime, 
-		plannedShiftEnd Datetime, 
-		shiftClosed bit,
-		shiftClosedType char(1),
-		createdBy varchar(50),
-		createdAt Datetime,
-		shiftClosedBy varchar(50),
-		HandOverRawData ntext,
-		HandOverReportData ntext,
-		idShiftCycle int,
-		tagComment nchar(1000),
-		tagReportID bigint,
-		tagReportDataKey nchar(30),
-		HandOverToPerson nchar(50),
-		shiftClosedByFullName nchar(50));
-
-	declare @tmpShiftDataPrev Table (idFactory int,
-		idShiftData int, 
-		idShiftDefinition int, 
-		shiftClosedAt Datetime,
-		idTeam int, 
-		plannedShiftStart Datetime, 
-		plannedShiftEnd Datetime, 
-		shiftClosed bit,
-		shiftClosedType char(1),
-		createdBy varchar(50),
-		createdAt Datetime,
-		shiftClosedBy varchar(50),
-		HandOverRawData ntext,
-		HandOverReportData ntext,
-		idShiftCycle int,
-		tagComment nchar(1000),
-		tagReportID bigint,
-		tagReportDataKey nchar(30),
-		HandOverToPerson nchar(50),
-		shiftClosedByFullName nchar(50));
+		shiftClosedAt Datetime);
 
 	declare @tmpShiftDataCombined Table (idFactory int,
 		idShiftData int, 
 		idShiftDefinition int, 
 		shiftClosedAt Datetime,
-		idTeam int, 
-		plannedShiftStart Datetime, 
-		plannedShiftEnd Datetime, 
-		shiftClosed bit,
-		shiftClosedType char(1),
-		createdBy varchar(50),
-		createdAt Datetime,
-		shiftClosedBy varchar(50),
-		HandOverRawData ntext,
-		HandOverReportData ntext,
-		idShiftCycle int,
-		tagComment nchar(1000),
-		tagReportID bigint,
-		tagReportDataKey nchar(30),
-		HandOverToPerson nchar(50),
-		shiftClosedByFullName nchar(50),
 		shiftStartedAt Datetime);
 
-	 insert into @tmpShiftData (idFactory, idShiftData, idShiftDefinition, shiftClosedAt, idTeam, plannedShiftStart, plannedShiftEnd, shiftClosed, 
-		shiftClosedType, createdBy, createdAt, shiftClosedBy, HandOverRawData, HandOverReportData, idShiftCycle, tagComment, 
-		tagReportID, tagReportDataKey, HandOverToPerson, shiftClosedByFullName)
-		select idFactory, idShiftData, idShiftDefinition, shiftClosedAt, idTeam, plannedShiftStart, plannedShiftEnd, 
-		shiftClosed, shiftClosedType, createdBy, createdAt, shiftClosedBy, HandOverRawData, HandOverReportData, 
-		idShiftCycle, tagComment, tagReportID, tagReportDataKey, HandOverToPerson, shiftClosedByFullName
+	declare @tmpShiftDataResult Table (idFactory int,
+		idShiftData int, 
+		idShiftDefinition int, 
+		shiftClosedAt Datetime,
+		shiftStartedAt Datetime);
+
+	 insert into @tmpShiftData (idFactory, idShiftData, idShiftDefinition, shiftClosedAt)
+		select idFactory, idShiftData, idShiftDefinition, shiftClosedAt
 		from shiftData
-		where idFactory = 63
-		and shiftClosedAt > convert(date, '2016-01-01', 102)
-		and shiftClosedAt < convert(date, '2016-01-30', 102)
+		where idFactory = @idFactory
+		and shiftClosedAt > @startDate
+		and shiftClosedAt < @endDate
+		and shiftClosed = 1
 		order by idShiftData
 
-	 insert into @tmpShiftDataCombined (idFactory, idShiftData, idShiftDefinition, shiftClosedAt, idTeam, plannedShiftStart, plannedShiftEnd, shiftClosed, 
-		shiftClosedType, createdBy, createdAt, shiftClosedBy, HandOverRawData, HandOverReportData, idShiftCycle, tagComment, 
-		tagReportID, tagReportDataKey, HandOverToPerson, shiftClosedByFullName, shiftStartedAt)
-		select sd.idFactory, sd.idShiftData, sd.idShiftDefinition, sd.shiftClosedAt, sd.idTeam, sd.plannedShiftStart, sd.plannedShiftEnd, 
-		sd.shiftClosed, sd.shiftClosedType, sd.createdBy, sd.createdAt, sd.shiftClosedBy, sd.HandOverRawData, sd.HandOverReportData, 
-		sd.idShiftCycle, sd.tagComment, sd.tagReportID, sd.tagReportDataKey, sd.HandOverToPerson, sd.shiftClosedByFullName, 
-		sdp.shiftClosedAt as shiftStartedAt
+	 insert into @tmpShiftDataCombined (idFactory, idShiftData, idShiftDefinition, shiftClosedAt, shiftStartedAt)
+		select sd.idFactory, sd.idShiftData, sd.idShiftDefinition, sd.shiftClosedAt, sdp.shiftClosedAt as shiftStartedAt
 		from @tmpShiftData sd, @tmpShiftData sdp
 		where sd.shiftClosedAt > sdp.shiftClosedAt
 		order by sd.idShiftData
 
-	 select idShiftData, shiftClosedAt, max(shiftStartedAt) as shiftStartedAt from @tmpShiftDataCombined group by idShiftData, shiftClosedAt;
+	 insert into @tmpShiftDataResult (idFactory, idShiftData, idShiftDefinition, shiftClosedAt, shiftStartedAt)
+		select idFactory, idShiftData, idShiftDefinition,
+			max(shiftStartedAt) as shiftStartedAt, shiftClosedAt 
+		from @tmpShiftDataCombined 
+		group by idFactory, idShiftData, idShiftDefinition, shiftClosedAt
+		order by  idFactory, idShiftData
 
+	select * from @tmpShiftDataResult res, shiftData sd where res.idShiftData = sd.idShiftData
 	END;
 GO
 
-EXEC spShiftActualStartAndEnd;
+declare @start Datetime = convert(date, '2016-01-01', 102);
+declare @end Datetime = convert(date, '2016-01-30', 102);
+
+EXEC spShiftActualStartAndEnd 63, @start, @end
