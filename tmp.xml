@@ -1,0 +1,434 @@
+xmlData:
+<Rowsets Version="15.0 SP4 Patch 4 (Jun 3, 2015)" StartDate="2016-03-15T08:22:34" EndDate="2016-03-15T09:22:34" DateCreated="2016-03-15T09:22:34" CachedTime="">
+    <Rowset>
+        <Columns>
+            <Column SourceColumn="idFactory" SQLDataType="4" Name="idFactory" MinRange="0" MaxRange="1" Description="idFactory" />
+            <Column SourceColumn="ID" SQLDataType="4" Name="ID" MinRange="0" MaxRange="1" Description="ID" />
+            <Column SourceColumn="PlanShiftStart" SQLDataType="93" Name="PlanShiftStart" MinRange="0" MaxRange="1" Description="Pl
+anShiftStart" />
+            <Column SourceColumn="PlanShiftEnd" SQLDataType="93" Name="PlanShiftEnd" MinRange="0" MaxRange="1" Description="PlanShiftEnd" />
+            <Column SourceColumn="ShiftStart" SQLDataType="93" Name="ShiftStart" MinRange="0" MaxRange="1" Description="Shi
+ftStart" />
+            <Column SourceColumn="ShiftEnd" SQLDataType="93" Name="ShiftEnd" MinRange="0" MaxRange="1" Description="ShiftEnd" />
+            <Column SourceColumn="ClosedBy" SQLDataType="12" Name="ClosedBy" MinRange="0" MaxRange="1" Description="ClosedBy" />
+            <Column Sour ceColumn="tagReportID" SQLDataType="-5" Name="tagReportID" MinRange="0" MaxRange="1" Description="tagReportID" />
+            <Column SourceColumn="tagReportDataKey" SQLDataType="-15" Name="tagReportDataKey" MinRange="0" MaxRange="1" Description="tagReportDataKey" />
+            < Column SourceColumn="tagComment" SQLDataType="-15" Name="tagComment" MinRange="0" MaxRange="1" Description="tagComment" />
+            <Column SourceColumn="idFactory" SQLDataType="4" Name="idFactory" MinRange="0" MaxRange="1" Description="idFactory" />
+            <Column SourceC olumn="ReportTechnology" SQLDataType="12" Name="ReportTechnology" MinRange="0" MaxRange="1" Description="ReportTechnology" />
+            <Column SourceColumn="ShiftName" SQLDataType="-15" Name="ShiftName" MinRange="0" MaxRange="1" Description="ShiftName" />
+            <Column So urceColumn="TeamName" SQLDataType="12" Name="TeamName" MinRange="0" MaxRange="1" Description="TeamName" />
+            <Column SourceColumn="Logbook" SQLDataType="12" Name="Logbook" MinRange="0" MaxRange="1" Description="Logbook" />
+            <Column SourceColumn="isMainLogBook" SQLDataType="-7" Name="isMainLogBook" MinRange="0" MaxRange="1" Description="isMainLogBook" />
+        </Columns>
+        <Row>
+            <idFactory>62</idFactory>
+            <ID>21123</ID>
+            <PlanShiftStart>2015-08-14T07:00:00</PlanShiftStart>
+            <PlanShiftEnd>2015-08-14T16:00:00</PlanShiftEnd>
+            <ShiftStart>TimeUnavailable</ShiftStart>
+            <ShiftEnd>2015-11-09T19:37:35</ShiftEnd>
+            <ClosedBy>STANDESO</ClosedBy>
+            <tagReportID>3</tagReportID>
+            <tagReportDataKey>21123-41183</tagReportDataKey>
+            <tagComment>qq</tagComment>
+            <idFactory>62</idFactory>
+            <ReportTechnology>VER2</ ReportTechnology>
+                <ShiftName>Weekdays</ShiftName>
+                <TeamName>TL2</TeamName>
+                <Logbook>BERCO TL</Logbook>
+                <isMainLogBook>1</isMainLogBook>
+        </Row>
+        <Row>
+            <idFactory>62</idFactory>
+            <ID>21122</ID>
+            <PlanShiftStart>2015-08-13T07:00:00</PlanShiftStart>
+            <PlanShiftEnd>2015-08- 13T16:00:00
+            </PlanShiftEnd>
+            <ShiftStart>TimeUnavailable</ShiftStart>
+            <ShiftEnd>2015-11-09T19:37:07</ShiftEnd>
+            <ClosedBy>STANDESO</ClosedBy>
+            <tagReportID>3</tagReportID>
+            <tagReportDataKey>21122-35912</tagReportDataKey>
+            <tagComment />
+            <idFactory>62</idFactory>
+            <ReportTechnology>VER2</ReportTechnology>
+            <ShiftName>Weekdays</ShiftName>
+            <TeamName>TL2</TeamName>
+            <Logbook>BERCO TL</Logbook>
+            <isMainLogBook>1</isMainLogBook>
+        </Row>
+        <Row>
+            <idFactory>63</idFactory>
+            <ID>20861</ID>
+            <PlanShiftStart>2015-07-29T08:00:00</PlanShiftStart>
+            <PlanShiftEnd>2015-07-29T16:30:00</PlanShiftEnd>
+                <ShiftStart>2015-08-10T15:14:17</ShiftStart>
+                <ShiftEnd>2015-08-11T05:56:05</ShiftEnd>
+                <ClosedBy>MEUPADRA</ClosedBy>
+                <tagReportID>NA</tagReportID>
+                <tagReportDataKey>---</tagReportDataKey>
+                <tagComment>---</tagComment>
+                <idFactory>63</idFactory>
+                <ReportTechnology>OLD</ReportTechnology>
+                <ShiftName>Day</ShiftName>
+                <TeamName>---</TeamName>
+                <Logbook>BERCO SHIFTBOOK</Logbook>
+                <isMainLogBook>0</isMainLogBook>
+        </Row>
+        <Row>
+            <idFactory>63</idFactory>
+            <ID>20860</ID>
+            <PlanShiftStart>2015-07- 29T00:00:00
+            </PlanShiftStart>
+            <PlanShiftEnd>2015-07-29T08:00:00</PlanShiftEnd>
+            <ShiftStart>2015-08-04T08:10:32</ShiftStart>
+            <ShiftEnd>2015-08-10T15:14:17</ShiftEnd>
+            <ClosedBy>STLARSHE</ClosedBy>
+            <tagReportID>NA</tagReportID>
+            <tagReportDataKey>---</tagReportDataKey>
+            <tagComment>---</tagComment>
+            <idFactory>63</idFactory>
+            <ReportTechnology>OLD</ReportTechnology>
+            <ShiftName>Night</ShiftName>
+            <TeamName>A ploeg</TeamName>
+            <Logbook>BERCO SHIFTBOOK</Logbook>
+            <isMainLogBook>0</isMainLogBook>
+        </Row>
+        <Row>
+            <idFactory>62</idFactory>
+            < ID>21121</ID>
+                <PlanShiftStart>2015-08-12T07:00:00</PlanShiftStart>
+                <PlanShiftEnd>2015-08-12T16:00:00</PlanShiftEnd>
+                <ShiftStart>TimeUnavailable</ShiftStart>
+                <ShiftEnd>2015-08-04T11:08:51</ShiftEnd>
+                <ClosedBy>MEUPADRA</ClosedBy>
+                <tagReportID>NA</tagReportID>
+                <tagReportDataKey>---</tagReportDataKey>
+                <tagComment>---</tagComment>
+                <idFactory>62</idFactory>
+                <ReportTechnology>OLD</ReportTechnology>
+                <ShiftName>Weekdays</ShiftName>
+                <TeamName>TL2</TeamName>
+                <Logbook>BERCO TL</Logbook>
+                <isMainLogBook>1</isMainLogBook>
+        </Row>
+        <Row>
+            < idFactory>63</idFactory>
+                <ID>20859</ID>
+                <PlanShiftStart>2015-07-28T16:00:00</PlanShiftStart>
+                <PlanShiftEnd>2015-07-29T00:00:00</PlanShiftEnd>
+                <ShiftStart>2015-07-29T12:11:04</ShiftStart>
+                <ShiftEnd>2015-08-04T08:10:32</ShiftEnd>
+                <ClosedBy>MEUPADRA</ClosedBy>
+                <tag ReportID>NA</tagReportID>
+                    <tagReportDataKey>---</tagReportDataKey>
+                    <tagComment>---</tagComment>
+                    <idFactory>63</idFactory>
+                    <ReportTechnology>OLD</ReportTechnology>
+                    <ShiftName>Afternoon</ShiftName>
+                    <TeamName>B ploeg</TeamName>
+                    <Logbook>BERCO SHIFTBOOK</Logbook>
+                    <is MainLogBook>0</isMainLogBook>
+        </Row>
+        <Row>
+            <idFactory>62</idFactory>
+            <ID>21120</ID>
+            <PlanShiftStart>2015-08-11T07:00:00</PlanShiftStart>
+            <PlanShiftEnd>2015-08-11T16:00:00</PlanShiftEnd>
+            <ShiftStart>TimeUnavailable</ShiftStart>
+            <ShiftEnd>2015-08-04T08:00:54</Shift End>
+                <ClosedBy>MEUPADRA</ClosedBy>
+                <tagReportID>NA</tagReportID>
+                <tagReportDataKey>---</tagReportDataKey>
+                <tagComment>---</tagComment>
+                <idFactory>62</idFactory>
+                <ReportTechnology>OLD</ReportTechnology>
+                <ShiftName>Weekdays</ShiftName>
+                <TeamName>TL2</TeamName>
+                <Logb ook>BERCO TL</Logbook>
+                    <isMainLogBook>1</isMainLogBook>
+        </Row>
+        <Row>
+            <idFactory>62</idFactory>
+            <ID>21119</ID>
+            <PlanShiftStart>2015-08-10T07:00:00</PlanShiftStart>
+            <PlanShiftEnd>2015-08-10T16:00:00</PlanShiftEnd>
+            <ShiftStart>TimeUnavailable</ShiftStart>
+            <ShiftEnd>2 015-07-30T12:08:32
+            </ShiftEnd>
+            <ClosedBy>MEUPADRA</ClosedBy>
+            <tagReportID>NA</tagReportID>
+            <tagReportDataKey>---</tagReportDataKey>
+            <tagComment>---</tagComment>
+            <idFactory>62</idFactory>
+            <ReportTechnology>OLD</ReportTechnology>
+            <ShiftName>Weekdays</ShiftName>
+            <TeamName>TL2</TeamName>
+            <Logbook>BERCO TL</Logbook>
+            <isMainLogBook>1</isMainLogBook>
+        </Row>
+        <Row>
+            <idFactory>62</idFactory>
+            <ID>21118</ID>
+            <PlanShiftStart>2015-08-09T06:00:00</PlanShiftStart>
+            <PlanShiftEnd>2015-08-09T11:30:00</PlanShiftEnd>
+            <ShiftStart>TimeUnavailabl e
+            </ShiftStart>
+            <ShiftEnd>2015-07-30T12:07:12</ShiftEnd>
+            <ClosedBy>MEUPADRA</ClosedBy>
+            <tagReportID>NA</tagReportID>
+            <tagReportDataKey>---</tagReportDataKey>
+            <tagComment>---</tagComment>
+            <idFactory>62</idFactory>
+            <ReportTechnology>OLD</ReportTechnology>
+            <ShiftName>Weekend</ShiftName>
+            <TeamName>TL1</TeamName>
+            <Logbook>BERCO TL</Logbook>
+            <isMainLogBook>1</isMainLogBook>
+        </Row>
+        <Row>
+            <idFactory>62</idFactory>
+            <ID>21117</ID>
+            <PlanShiftStart>2015-08-08T06:00:00</PlanShiftStart>
+            <PlanShiftEnd>2015-08-08T11:30:00</PlanShiftEnd>
+            <ShiftStart>TimeUnavailable</ShiftStart>
+            <ShiftEnd>2015-07-30T12:05:51</ShiftEnd>
+            <ClosedBy>MEUPADRA</ClosedBy>
+            <tagReportID>NA</tagReportID>
+            <tagReportDataKey>---</tagReportDataKey>
+            <tagComment>---</tagComment>
+            <idFactory>62</idFactory>
+            <ReportTechnology>OLD</ReportTechnology>
+            <ShiftName>Weekend</ShiftName>
+            <TeamName>TL1</TeamName>
+            <Logbook>BERCO TL</Logbook>
+            <isMainLogBook>1</isMainLogBook>
+        </Row>
+        <Row>
+            <idFactory>62</idFactory>
+            <ID>21116</ID>
+            <PlanShiftStart>2015-08-07T07:00:00</PlanShiftStart>
+            <PlanShiftEnd>2015-08-07T1 6:00:00
+            </PlanShiftEnd>
+            <ShiftStart>TimeUnavailable</ShiftStart>
+            <ShiftEnd>2015-07-30T12:04:32</ShiftEnd>
+            <ClosedBy>MEUPADRA</ClosedBy>
+            <tagReportID>NA</tagReportID>
+            <tagReportDataKey>---</tagReportDataKey>
+            <tagComment>---</tagComment>
+            <idFactory>62</idFactory>
+            <ReportTechnology>OLD</ReportTechnology>
+            <ShiftName>Weekdays</ShiftName>
+            <TeamName>TL1</TeamName>
+            <Logbook>BERCO TL</Logbook>
+            <isMainLogBook>1</isMainLogBook>
+        </Row>
+        <Row>
+            <idFactory>62</idFactory>
+            <ID>21115</ID>
+            <PlanShiftStart>2015-08-06T07:00:00</PlanShiftStart>
+            < PlanShiftEnd>2015-08-06T16:00:00</PlanShiftEnd>
+                <ShiftStart>TimeUnavailable</ShiftStart>
+                <ShiftEnd>2015-07-30T12:01:36</ShiftEnd>
+                <ClosedBy>MEUPADRA</ClosedBy>
+                <tagReportID>NA</tagReportID>
+                <tagReportDataKey>---</tagReportDataKey>
+                <tagComment>---</tagComment>
+                <idFactory>62</idFactory>
+                <ReportTechnology>OLD</ReportTechnology>
+                <ShiftName>Weekdays</ShiftName>
+                <TeamName>TL1</TeamName>
+                <Logbook>BERCO TL</Logbook>
+                <isMainLogBook>1</isMainLogBook>
+        </Row>
+        <Row>
+            <idFactory>62</idFactory>
+            <ID>21114</ID>
+            <PlanShiftStart>2015-08-05T0 7:00:00
+            </PlanShiftStart>
+            <PlanShiftEnd>2015-08-05T16:00:00</PlanShiftEnd>
+            <ShiftStart>TimeUnavailable</ShiftStart>
+            <ShiftEnd>2015-07-30T12:00:01</ShiftEnd>
+            <ClosedBy>MEUPADRA</ClosedBy>
+            <tagReportID>NA</tagReportID>
+            <tagReportDataKey>---</tagReportDataKey>
+            <tagComment>---</tagComment>
+            <idFactory>62</idFactory>
+            <ReportTechnology>OLD</ReportTechnology>
+            <ShiftName>Weekdays</ShiftName>
+            <TeamName>TL1</TeamName>
+            <Logbook>BERCO TL</Logbook>
+            <isMainLogBook>1</isMainLogBook>
+        </Row>
+        <Row>
+            <idFactory>62</idFactory>
+            <ID>21113</ID>
+            <PlanShiftStart>2015-08-04T07:00:00</PlanShiftStart>
+            <PlanShiftEnd>2015-08-04T16:00:00</PlanShiftEnd>
+            <ShiftStart>TimeUnavailable</ShiftStart>
+            <ShiftEnd>2015-07-30T11:57:50</ShiftEnd>
+            <ClosedBy>MEUPADRA</ClosedBy>
+            <tagReportID>NA</tagReportID>
+            <tagReportDataKey>-- -
+            </tagReportDataKey>
+            <tagComment>---</tagComment>
+            <idFactory>62</idFactory>
+            <ReportTechnology>OLD</ReportTechnology>
+            <ShiftName>Weekdays</ShiftName>
+            <TeamName>TL1</TeamName>
+            <Logbook>BERCO TL</Logbook>
+            <isMainLogBook>1</isMainLogBook>
+        </Row>
+        <Row>
+            <idFactory>63</idFactory>
+            <ID>20858</ID>
+            <PlanShiftStart>2015-07-28T08:00:00</PlanShiftStart>
+            <PlanShiftEnd>2015-07-28T16:00:00</PlanShiftEnd>
+            <ShiftStart>2015-07-28T13:39:23</ShiftStart>
+            <ShiftEnd>2015-07-29T12:11:04</ShiftEnd>
+            <ClosedBy>MEUPADRA</ClosedBy>
+            <tagReportID>NA</tagReportID>
+            <tagReportDataKey>---</tagReportDataKey>
+            <tagComment>---</tagComment>
+            <idFactory>63</idFactory>
+            <ReportTechnology>OLD</ReportTechnology>
+            <ShiftName>Morning</ShiftName>
+            <TeamName>E ploeg</TeamName>
+            <Logbook>BERCO SHIFTBOOK</Logbook>
+            <isMainLogBook>0</isMainLogBook>
+        </Row>
+        <Row>
+            <idFactory>63</idFactory>
+            <ID>20857</ID>
+            <PlanShiftStart>2015-07-28T08:00:00</PlanShiftStart>
+            <PlanShiftEnd>2015-07-28T16:30:00</PlanShiftEnd>
+            <ShiftStart>2015-07-28T13:39:23</ShiftStart>
+            <ShiftEnd>2015-07-29T12:09:57</ShiftEnd>
+            <ClosedBy>
+                MEUPADRA</ClosedBy>
+            <tagReportID>NA</tagReportID>
+            <tagReportDataKey>---</tagReportDataKey>
+            <tagComment>---</tagComment>
+            <idFactory>63</idFactory>
+            <ReportTechnology>OLD</ReportTechnology>
+            <ShiftName>Day</ShiftName>
+            <TeamName>---</TeamName>
+            <Logbook>BERCO SHIFTBOOK
+            </Logbook>
+            <isMainLogBook>0</isMainLogBook>
+        </Row>
+        <Row>
+            <idFactory>62</idFactory>
+            <ID>21112</ID>
+            <PlanShiftStart>2015-08-03T07:00:00</PlanShiftStart>
+            <PlanShiftEnd>2015-08-03T16:00:00</PlanShiftEnd>
+            <ShiftStart>TimeUnavailable</ShiftStart>
+            <ShiftEnd>2015-07-28T23 :35:23
+            </ShiftEnd>
+            <ClosedBy>MEUPADRA</ClosedBy>
+            <tagReportID>NA</tagReportID>
+            <tagReportDataKey>---</tagReportDataKey>
+            <tagComment>---</tagComment>
+            <idFactory>62</idFactory>
+            <ReportTechnology>OLD</ReportTechnology>
+            <ShiftName>Weekdays</ShiftName>
+            <TeamName>TL1</TeamName>
+            <Logbook>BERCO TL</Logbook>
+            <isMainLogBook>1</isMainLogBook>
+        </Row>
+        <Row>
+            <idFactory>63</idFactory>
+            <ID>20856</ID>
+            <PlanShiftStart>2015-07-28T00:00:00</PlanShiftStart>
+            <PlanShiftEnd>2015-07-28T08:00:00</PlanShiftEnd>
+            <ShiftStart>2015-07-28T13:30:38</ShiftStart>
+            <ShiftEnd>2015-07-28T13:39:23</ShiftEnd>
+            <ClosedBy>STLARSHE</ClosedBy>
+            <tagReportID>NA</tagReportID>
+            <tagReportDataKey>---</tagReportDataKey>
+            <tagComment>---</tagComment>
+            <idFactory>63</idFactory>
+            <ReportTechnology>OLD</ReportTechnology>
+            <ShiftName>Night</ ShiftName>
+                <TeamName>A ploeg</TeamName>
+                <Logbook>BERCO SHIFTBOOK</Logbook>
+                <isMainLogBook>0</isMainLogBook>
+        </Row>
+        <Row>
+            <idFactory>63</idFactory>
+            <ID>20855</ID>
+            <PlanShiftStart>2015-07-27T16:00:00</PlanShiftStart>
+            <PlanShiftEnd>2015-07-28T00:00:00</PlanShiftEnd>
+            < ShiftStart>2015-07-28T06:37:58</ShiftStart>
+                <ShiftEnd>2015-07-28T13:30:38</ShiftEnd>
+                <ClosedBy>STLARSHE</ClosedBy>
+                <tagReportID>NA</tagReportID>
+                <tagReportDataKey>---</tagReportDataKey>
+                <tagComment>---</tagComment>
+                <idFactory>63</idFactory>
+                <ReportTechnology>OLD
+                </ReportTechnology>
+                <ShiftName>Afternoon</ShiftName>
+                <TeamName>B ploeg</TeamName>
+                <Logbook>BERCO SHIFTBOOK</Logbook>
+                <isMainLogBook>0</isMainLogBook>
+        </Row>
+        <Row>
+            <idFactory>63</idFactory>
+            <ID>20854</ID>
+            <PlanShiftStart>2015-07-27T08:00:00</PlanShiftStart>
+            <PlanShiftEnd>2015-07-27T16:00:00</PlanShiftEnd>
+            <ShiftStart>2015-07-27T12:11:01</ShiftStart>
+            <ShiftEnd>2015-07-28T06:37:58</ShiftEnd>
+            <ClosedBy>MEUPADRA</ClosedBy>
+            <tagReportID>NA</tagReportID>
+            <tagReportDataKey>---</tagReportDataKey>
+            <tagComment>---</tagComment>
+            <idFactory>63</idFactory>
+            <ReportTechnology>OLD</ReportTechnology>
+            <ShiftName>Morning</ShiftName>
+            <TeamName>E ploeg</TeamName>
+            <Logbook>BERCO SHIFTBOOK</Logbook>
+            <isMainLogBook>0</isMainLogBook>
+        </Row>
+        <Row>
+            <idFactory>63</idFactory>
+            <ID>20853</ID>
+            <PlanShiftStart>2015- 07-27T08:00:00
+            </PlanShiftStart>
+            <PlanShiftEnd>2015-07-27T16:30:00</PlanShiftEnd>
+            <ShiftStart>2015-07-27T12:11:01</ShiftStart>
+            <ShiftEnd>2015-07-28T06:08:41</ShiftEnd>
+            <ClosedBy>MEUPADRA</ClosedBy>
+            <tagReportID>NA</tagReportID>
+            <tagReportDataKey>---</tagReportDataKey>
+            <tagComment>---</tagComment>
+            <idFactory>63</idFactory>
+            <ReportTechnology>OLD</ReportTechnology>
+            <ShiftName>Day</ShiftName>
+            <TeamName>---</TeamName>
+            <Logbook>BERCO SHIFTBOOK</Logbook>
+            <isMainLogBook>0</isMainLogBook>
+        </Row>
+        <Row>
+            <idFactory>63</idFactory>
+            <ID>
+                20852</ID>
+            <PlanShiftStart>2015-07-27T00:00:00</PlanShiftStart>
+            <PlanShiftEnd>2015-07-27T08:00:00</PlanShiftEnd>
+            <ShiftStart>TimeUnavailable</ShiftStart>
+            <ShiftEnd>2015-07-27T12:11:01</ShiftEnd>
+            <ClosedBy>MEUPADRA</ClosedBy>
+            <tagReportID>NA</tagReportID>
+            <tagReportDataKey>---</tagReportDataKey>
+            <tagComment>---</tagComment>
+            <idFactory>63</idFactory>
+            <ReportTechnology>OLD</ReportTechnology>
+            <ShiftName>Night</ShiftName>
+            <TeamName>A ploeg</TeamName>
+            <Logbook>BERCO SHIFTBOOK</Logbook>
+            <isMainLogBook>0</isMainLogBook>
+        </Row>
+    </Rowset>
+</Rowsets>
