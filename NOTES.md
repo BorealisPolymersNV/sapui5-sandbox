@@ -181,4 +181,141 @@ GO
 EXEC sp_max_shift_closed_at;
 
 
+---
 
+select sd.idFactory, 
+		sd.idShiftData, 
+		sd.idShiftDefinition, 
+		sd.idTeam, 
+		sd.plannedShiftStart, 
+		sd.PlannedShiftEnd, 
+		sd.shiftClosed, 
+		sd.shiftClosedType,
+		sd.createdBy,
+		sd.createdAt,
+		sd.shiftClosedBy,
+		sd.shiftClosedAt,
+		sd.HandOverRawData,
+		sd.HandOverReportData,
+		sd.idShiftCycle,
+		sd.tagComment,
+		sd.tagReportID,
+		sd.tagReportDataKey,
+		sd.HandOverToPerson,
+		sd.shiftClosedByFullName,
+		sdp.shiftClosedAt as shiftStartedAt
+	from shiftData sd, shiftData sdp
+	where sd.shiftClosedAt > sdp.shiftClosedAt 
+		and sd.idFactory = sdp.idFactory
+		and datediff(day, sd.shiftClosedAt, sdp.shiftClosedAt) <= 2		-- look max two days back
+		and sd.idFactory = 63
+	order by idShiftData
+    
+    
+---
+
+USE [SAPMII_ESLB-Sandbox1]
+
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+ALTER PROCEDURE spShiftActualStartAndEnd
+AS
+BEGIN
+	SET NOCOUNT ON;
+
+	declare @tmpShiftData Table (idFactory int,
+		idShiftData int, 
+		idShiftDefinition int, 
+		shiftClosedAt Datetime,
+		idTeam int, 
+		plannedShiftStart Datetime, 
+		plannedShiftEnd Datetime, 
+		shiftClosed bit,
+		shiftClosedType char(1),
+		createdBy varchar(50),
+		createdAt Datetime,
+		shiftClosedBy varchar(50),
+		HandOverRawData ntext,
+		HandOverReportData ntext,
+		idShiftCycle int,
+		tagComment nchar(1000),
+		tagReportID bigint,
+		tagReportDataKey nchar(30),
+		HandOverToPerson nchar(50),
+		shiftClosedByFullName nchar(50));
+
+	declare @tmpShiftDataPrev Table (idFactory int,
+		idShiftData int, 
+		idShiftDefinition int, 
+		shiftClosedAt Datetime,
+		idTeam int, 
+		plannedShiftStart Datetime, 
+		plannedShiftEnd Datetime, 
+		shiftClosed bit,
+		shiftClosedType char(1),
+		createdBy varchar(50),
+		createdAt Datetime,
+		shiftClosedBy varchar(50),
+		HandOverRawData ntext,
+		HandOverReportData ntext,
+		idShiftCycle int,
+		tagComment nchar(1000),
+		tagReportID bigint,
+		tagReportDataKey nchar(30),
+		HandOverToPerson nchar(50),
+		shiftClosedByFullName nchar(50));
+
+	declare @tmpShiftDataCombined Table (idFactory int,
+		idShiftData int, 
+		idShiftDefinition int, 
+		shiftClosedAt Datetime,
+		idTeam int, 
+		plannedShiftStart Datetime, 
+		plannedShiftEnd Datetime, 
+		shiftClosed bit,
+		shiftClosedType char(1),
+		createdBy varchar(50),
+		createdAt Datetime,
+		shiftClosedBy varchar(50),
+		HandOverRawData ntext,
+		HandOverReportData ntext,
+		idShiftCycle int,
+		tagComment nchar(1000),
+		tagReportID bigint,
+		tagReportDataKey nchar(30),
+		HandOverToPerson nchar(50),
+		shiftClosedByFullName nchar(50),
+		shiftStartedAt Datetime);
+
+	 insert into @tmpShiftData (idFactory, idShiftData, idShiftDefinition, shiftClosedAt, idTeam, plannedShiftStart, plannedShiftEnd, shiftClosed, 
+		shiftClosedType, createdBy, createdAt, shiftClosedBy, HandOverRawData, HandOverReportData, idShiftCycle, tagComment, 
+		tagReportID, tagReportDataKey, HandOverToPerson, shiftClosedByFullName)
+		select idFactory, idShiftData, idShiftDefinition, shiftClosedAt, idTeam, plannedShiftStart, plannedShiftEnd, 
+		shiftClosed, shiftClosedType, createdBy, createdAt, shiftClosedBy, HandOverRawData, HandOverReportData, 
+		idShiftCycle, tagComment, tagReportID, tagReportDataKey, HandOverToPerson, shiftClosedByFullName
+		from shiftData
+		where idFactory = 63
+		and shiftClosedAt > convert(date, '2016-01-01', 102)
+		and shiftClosedAt < convert(date, '2016-01-30', 102)
+		order by idShiftData
+
+	 insert into @tmpShiftDataCombined (idFactory, idShiftData, idShiftDefinition, shiftClosedAt, idTeam, plannedShiftStart, plannedShiftEnd, shiftClosed, 
+		shiftClosedType, createdBy, createdAt, shiftClosedBy, HandOverRawData, HandOverReportData, idShiftCycle, tagComment, 
+		tagReportID, tagReportDataKey, HandOverToPerson, shiftClosedByFullName, shiftStartedAt)
+		select sd.idFactory, sd.idShiftData, sd.idShiftDefinition, sd.shiftClosedAt, sd.idTeam, sd.plannedShiftStart, sd.plannedShiftEnd, 
+		sd.shiftClosed, sd.shiftClosedType, sd.createdBy, sd.createdAt, sd.shiftClosedBy, sd.HandOverRawData, sd.HandOverReportData, 
+		sd.idShiftCycle, sd.tagComment, sd.tagReportID, sd.tagReportDataKey, sd.HandOverToPerson, sd.shiftClosedByFullName, 
+		sdp.shiftClosedAt as shiftStartedAt
+		from @tmpShiftData sd, @tmpShiftData sdp
+		where sd.shiftClosedAt > sdp.shiftClosedAt
+		order by sd.idShiftData
+
+	 select idShiftData, shiftClosedAt, max(shiftStartedAt) as shiftStartedAt from @tmpShiftDataCombined group by idShiftData, shiftClosedAt;
+
+	END;
+GO
+
+EXEC spShiftActualStartAndEnd;
