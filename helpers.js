@@ -9,7 +9,8 @@
     helpers.ielog(msg.slice(len, msg.length), len);
   };
 
-  helpers.logxml = function(xml) {
+  helpers.logxml = function(header, xml) {
+  console.log(header);
    helpers.ielog(new XMLSerializer().serializeToString(xml), 255);
   }
 
