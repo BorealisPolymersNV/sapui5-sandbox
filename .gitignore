@@ -1,4 +1,3 @@
+.DS_Store
 openui5
-openui-runtime
-openui5-runtime*
-resources
+openui5-sdk*

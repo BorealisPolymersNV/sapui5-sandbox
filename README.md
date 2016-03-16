@@ -1,4 +1,16 @@
-Setup OpenUI5
+Setup SDK
+---------
+
+The download page at [openui5.org](http://openui5.org/download.html) lists the different
+availble releases.
+
+Currently is `v1.34.9` the latest stable release. Fetch with:
+`wget https://openui5.hana.ondemand.com/downloads/openui5-sdk-1.34.9.zip` (or just open the page
+in a browser).
+
+
+
+OpenUI5 Source
 -------------
 
 I've tested installing with `v0.12.5` and it works. I was note able to install with `v5.3.0`
