@@ -6,8 +6,7 @@ availble releases.
 
 Currently is `v1.34.9` the latest stable release. Fetch with:
 `wget https://openui5.hana.ondemand.com/downloads/openui5-sdk-1.34.9.zip` (or just open the page
-in a browser).
-
+in a browser). Unzip into a separate folder: `unzip -d openui5-sdk openui5-sdk-1.34.9.zip`.
 
 
 OpenUI5 Source
@@ -24,3 +23,14 @@ grunt serve
 
 Test with: http://localhost:8080/testsuite/
 
+
+
+Boilerplate app
+---------------
+
+```
+git clone https://github.com/6of5/UI5SplitApp-Boilerplate.git
+cd UI5SplitApp-Boilerplate
+npm install
+grunt server
+```
