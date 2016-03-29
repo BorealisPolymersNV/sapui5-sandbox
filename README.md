@@ -1,3 +1,13 @@
+Development using the runtime only
+----------------------------------
+
+```
+mkdir runtime; cd runtime
+wget https://openui5.hana.ondemand.com/downloads/openui5-runtime-1.34.8.zip
+unzip openui5-runtime-1.34.8.zip
+```
+
+
 Setup SDK
 ---------
 

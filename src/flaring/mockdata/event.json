@@ -1,0 +1,43 @@
+{
+  "Events": [
+    {
+      "Type": "Flaring",
+      "From": "2016-02-22 00:15",
+      "To": "2016-02-23 03:00",
+      "CurrentShiftTotalQty": "50",
+      "CurrentShiftRepQty": "50",
+      "CurrentShiftDiff": "0",
+      "TotalTotQty": "100",
+      "TotalRepQty": "95",
+      "TotalDiff": "5",
+      "ReasonType": "Power dip - external",
+      "Comment": "No comment..."
+    },
+    {
+      "Type": "Flaring",
+      "From": "2016-03-22 08:15",
+      "To": "2099-01-01 00:00",
+      "CurrentShiftTotalQty": "40",
+      "CurrentShiftRepQty": "30",
+      "CurrentShiftDiff": "10",
+      "TotalTotQty": "40",
+      "TotalRepQty": "0",
+      "TotalDiff": "10",
+      "ReasonType": "Planned Maintenance",
+      "Comment": "No comment..."
+    }
+  ],
+  "EventDetails": [
+    {
+      "Shift": "Morning",
+      "From": "2016-03-22 11:45",
+      "To": "2016-03-22 16:10",
+      "Quantity": "10",
+      "ReasonType": "Problems restarting",
+      "ReasonSubType": "Instrument failure",
+      "Equipment": "TI-987",
+      "Comment": "Calibration needed",
+      "Synergi#": "123456789"
+    }
+  ]
+}

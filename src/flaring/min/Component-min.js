@@ -1,0 +1,1 @@
+sap.ui.define(["sap/ui/core/UIComponent"],function(e){"use strict";var a=e.extend("flaring.Component",{metadata:{rootView:"flaring.Page",dependencies:{libs:["sap.m","sap.ui.layout"]},config:{sample:{stretch:!0,files:["Page.view.xml","Page.controller.js","Change.fragment.xml","Display.fragment.xml"]}}}});return a});
