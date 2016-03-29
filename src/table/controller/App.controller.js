@@ -3,7 +3,7 @@ sap.ui.define([
 ], function (Controller) {
 	"use strict";
 
-	return Controller.extend("wt.App", {
+	return Controller.extend("wt.controller.App", {
 
 		onShowHello : function () {
 			/* eslint-disable no-alert */

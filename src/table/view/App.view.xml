@@ -1,5 +1,5 @@
 <mvc:View
-	controllerName="wt.App"
+	controllerName="wt.controller.App"
 	xmlns="sap.m"
 	xmlns:mvc="sap.ui.core.mvc">
 	<Button
