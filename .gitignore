@@ -5,3 +5,4 @@ openui5-sdk*
 runtime
 *.zip
 src/tmp
+min

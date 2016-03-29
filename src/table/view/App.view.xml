@@ -1,8 +1,30 @@
-<mvc:View
-	controllerName="wt.controller.App"
-	xmlns="sap.m"
-	xmlns:mvc="sap.ui.core.mvc">
-	<Button
-		text="Say Hello"
-		press="onShowHello"/>
+<mvc:View controllerName="wt.controller.App" xmlns="sap.ui.table" xmlns:mvc="sap.ui.core.mvc" xmlns:u="sap.ui.unified" xmlns:c="sap.ui.core" xmlns:m="sap.m">
+  <m:Page showHeader="false" enableScrolling="false" class="sapUiContentPadding">
+    <m:content>
+      <Table rows="{/Products}" title="Products" selectionMode="MultiToggle" visibleRowCount="7">
+        <columns>
+          <Column width="11rem">
+            <m:Label text="Product Name" />
+            <template>
+              <m:Text text="{Name}" />
+            </template>
+          </Column>
+          <Column width="11rem">
+            <m:Label text="Product Id" />
+            <template>
+              <m:Input value="{ProductId}" />
+            </template>
+          </Column>
+          <Column width="6rem" hAlign="End">
+            <m:Label text="Quantity" />
+            <template>
+              <m:Label text="{Quantity}" />
+            </template>
+          </Column>
+
+        </columns>
+      </Table>
+    </m:content>
+  </m:Page>
 </mvc:View>
+
