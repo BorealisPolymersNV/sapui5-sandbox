@@ -1,0 +1,27 @@
+{
+  "name": "sapui5-playground",
+  "version": "0.0.1",
+  "description": "Borealis SAPUI Sandbox",
+  "main": "static-web-server.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "docco": "./node_modules/.bin/docco -o docco src/**/**/*.js src/**/**/**/*.js",
+    "clean-min": "rm -rf src/**/**/min src/**/**/**/min"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/borealisflaring/sapui5-sandbox.git"
+  },
+  "author": "Jonas Colmsjö",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/borealisflaring/sapui5-sandbox/issues"
+  },
+  "homepage": "https://github.com/borealisflaring/sapui5-sandbox#readme",
+  "dependencies": {
+    "docco": "^0.7.0"
+  }
+}
