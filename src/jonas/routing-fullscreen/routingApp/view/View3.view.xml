@@ -1,15 +1,13 @@
 <View
 	xmlns="sap.m"
 	xmlns:layout="sap.ui.layout"
-	controllerName="sap.ui.core.sample.RoutingFullscreen.routingApp.controller.View2">
+	>
 	<Page
-		title="Second Page"
-		showNavButton="true"
-		navButtonPress="onBack">
+		title="Third Page"
+		showNavButton="false">
 		<content>
 			<layout:VerticalLayout>
-				<Button text="To the first Page" press="onToPage1"/>
-				<Link id="link" text="A link to the first Page"/>
+				<Text text="Press the back button to get back..." />
 			</layout:VerticalLayout>
 		</content>
 	</Page>

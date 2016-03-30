@@ -23,6 +23,11 @@ sap.ui.define( ["sap/ui/core/UIComponent"], function (UIComponent) {
 						name: "page2",
 						pattern: "Page2",
 						target: "page2"
+					},
+					{
+						name: "page3",
+						pattern: "Page3",
+						target: "page3"
 					}
 				],
 				targets: {
@@ -32,6 +37,10 @@ sap.ui.define( ["sap/ui/core/UIComponent"], function (UIComponent) {
 					},
 					page2: {
 						viewName: "View2",
+						viewLevel: 1
+					},
+					page3: {
+						viewName: "View3",
 						viewLevel: 1
 					}
 				}
