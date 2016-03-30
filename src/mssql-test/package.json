@@ -4,7 +4,8 @@
   "description": "Testing to connect ot mssql from Node",
   "main": "index.js",
   "dependencies": {
-    "mssql": "^3.1.2"
+    "mssql": "^3.1.2",
+    "tedious": "^1.13.2"
   },
   "devDependencies": {},
   "scripts": {
