@@ -11,7 +11,7 @@ sap.ui.define(['sap/ui/core/UIComponent'],
 					"sap.m",
 					"sap.ui.layout"
 				]
-			},
+			}/*,
 			config : {
 				sample : {
 					stretch : true,
@@ -22,7 +22,7 @@ sap.ui.define(['sap/ui/core/UIComponent'],
 						"Display.fragment.xml"
 					]
 				}
-			}
+			}*/
 		}
 	});
 
