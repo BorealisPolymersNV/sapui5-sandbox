@@ -1,0 +1,15 @@
+{
+  "name": "mssql-test",
+  "version": "0.0.1",
+  "description": "Testing to connect ot mssql from Node",
+  "main": "index.js",
+  "dependencies": {
+    "mssql": "^3.1.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}

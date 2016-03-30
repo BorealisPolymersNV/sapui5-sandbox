@@ -1,4 +1,5 @@
 .DS_Store
+node_modules
 config.codekit
 openui5
 openui5-sdk*
