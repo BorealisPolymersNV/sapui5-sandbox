@@ -1,6 +1,7 @@
 .DS_Store
 node_modules
 docco
+docs/*.html
 config.codekit
 openui5
 openui5-sdk*
