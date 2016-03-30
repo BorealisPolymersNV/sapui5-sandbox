@@ -7,15 +7,9 @@
 
 	<semantic:MasterPage
 			id="page"
-			title="{masterView>/title}"
-			navButtonPress="onNavBack"
-			showNavButton="true">
+			title="{masterView>/title}">
 
 		<semantic:content>
-			<PullToRefresh
-					id="pullToRefresh"
-					visible="{device>/support/touch}"
-					refresh="onRefresh" />
 			<!-- For client side filtering add this to the items attribute:  parameters: {operationMode: 'Client'}}" -->
 			<List
 					id="list"
@@ -27,26 +21,13 @@
 					growingScrollToLoad="true"
 					updateFinished="onUpdateFinished"
 					selectionChange="onSelectionChange">
-				<infoToolbar>
-					<Toolbar
-							active="true"
-							id="filterBar"
-							visible="{masterView>/isFilterBarVisible}"
-							press="onOpenViewSettings">
-						<Title
-								id="filterBarLabel"
-								text="{masterView>/filterBarLabel}" />
-					</Toolbar>
-				</infoToolbar>
+				
 				<items>
 					<ObjectListItem
 							type="{= ${device>/system/phone} ? 'Active' : 'Inactive'}"
 							press="onSelectionChange"
 							title="{Name}"
-							number="{
-								path: 'UnitNumber',
-								formatter: '.formatter.currencyValue'
-							}"
+							number="{path: 'UnitNumber', formatter: '.formatter.currencyValue'}"
 							numberUnit="{UnitOfMeasure}">
 					</ObjectListItem>
 				</items>
