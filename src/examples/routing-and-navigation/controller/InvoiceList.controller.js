@@ -34,6 +34,8 @@ sap.ui.define([
 			var oList = this.getView().byId("invoiceList");
 			var oBinding = oList.getBinding("items");
 			oBinding.filter(aFilter);
+          
+            debug(sQuery, oList, oBinding, aFilter);
 		},
 
 		onPress: function (oEvent) {

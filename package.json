@@ -9,7 +9,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "docco": "./node_modules/.bin/docco -o docco src/**/**/*.js src/**/**/**/*.js",
-    "clean-min": "rm -rf src/**/**/min src/**/**/**/min"
+    "clean-min": "rm -rf src/**/**/min src/**/**/**/min",
+    "clean": "rm -rf docco"
   },
   "repository": {
     "type": "git",
