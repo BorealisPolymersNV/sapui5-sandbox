@@ -9,7 +9,6 @@ Getting started
 2. Fetch updates to this repository: `git pull`. See this [git tutorial](https://git-scm.com/docs/gittutorial) for an introduction to git.
 
 
-
 Development using the runtime only
 ----------------------------------
 

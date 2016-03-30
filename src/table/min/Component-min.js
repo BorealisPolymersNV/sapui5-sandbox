@@ -1,1 +1,0 @@
-sap.ui.define(["sap/ui/core/UIComponent"],function(e){"use strict";var t=e.extend("sap.m.tutorial.walkthrough.05.Component",{metadata:{config:{sample:{iframe:"index.html",stretch:!0,files:["App.controller.js","App.view.xml","index.html"]}}}});return t});
