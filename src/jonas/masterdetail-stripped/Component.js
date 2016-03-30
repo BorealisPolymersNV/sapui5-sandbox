@@ -1,7 +1,7 @@
 sap.ui.define([
 		"sap/ui/core/UIComponent",
 		"sap/ui/Device",
-		"model/models",
+		"masterdetail/model/models",
 		"masterdetail/controller/ListSelector"
 	], function (UIComponent, Device, models, ListSelector) {
   "use strict";
