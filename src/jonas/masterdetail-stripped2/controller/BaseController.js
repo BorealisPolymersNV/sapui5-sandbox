@@ -13,7 +13,7 @@ sap.ui.define([
 	], function (Controller, History) {
   "use strict";
 
-  return Controller.extend("masterdetail.controller.BaseController", {
+  return Controller.extend("sap.ui.demo.masterdetail.controller.BaseController", {
     
     // returns {sap.ui.core.routing.Router} the router for this component
     getRouter: function () {

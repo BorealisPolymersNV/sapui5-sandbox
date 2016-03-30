@@ -1,12 +1,12 @@
 sap.ui.define([
 		"sap/ui/core/UIComponent",
 		"sap/ui/Device",
-		"model/models",
-		"masterdetail/controller/ListSelector"
+		"sap/ui/demo/masterdetail/model/models",
+		"sap/ui/demo/masterdetail/controller/ListSelector"
 	], function (UIComponent, Device, models, ListSelector) {
   "use strict";
 
-  return UIComponent.extend("masterdetail.Component", {
+  return UIComponent.extend("sap.ui.demo.masterdetail.Component", {
 
     metadata: {
       manifest: "json"

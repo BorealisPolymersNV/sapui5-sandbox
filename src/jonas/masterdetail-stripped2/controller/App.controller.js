@@ -1,10 +1,10 @@
 sap.ui.define([
-		"masterdetail/controller/BaseController",
+		"sap/ui/demo/masterdetail/controller/BaseController",
 		"sap/ui/model/json/JSONModel"
 	], function (BaseController, JSONModel) {
   "use strict";
 
-  return BaseController.extend("masterdetail.controller.App", {
+  return BaseController.extend("sap.ui.demo.masterdetail.controller.App", {
 
     onInit: function () {
       // JC, using console.debug, jQuery.sap.log.debug is cluttered with SAP logging
@@ -19,7 +19,6 @@ sap.ui.define([
         busy: true,
         delay: 0
       });
-      
       this.setModel(oViewModel, "appView");
 
       fnSetAppNotBusy = function () {

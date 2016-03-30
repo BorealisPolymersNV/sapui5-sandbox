@@ -3,7 +3,7 @@ sap.ui.define([
 	], function (BaseObject) {
   "use strict";
 
-  return BaseObject.extend("masterdetail.model.ListSelector", {
+  return BaseObject.extend("sap.ui.demo.masterdetail.model.ListSelector", {
 
     // Provides a convenience API for selecting list items. All the functions will wait until the initial load 
     // of the a List passed to the instance by the setBoundMasterList function.
@@ -105,7 +105,7 @@ sap.ui.define([
     // is called.
     // @param {function} fnFunction the function to be executed when the list fires a selection change event
     // @param {function} oListener the listener object
-    // @return {masterdetail.model.ListSelector} the list selector object for method chaining
+    // @return {sap.ui.demo.masterdetail.model.ListSelector} the list selector object for method chaining
 
     attachListSelectionChange: function (fnFunction, oListener) {
       console.debug('ListSelector.js:attachListSelectionChange');

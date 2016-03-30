@@ -1,16 +1,16 @@
 /*global history */
 sap.ui.define([
-		"masterdetail/controller/BaseController",
+		"sap/ui/demo/masterdetail/controller/BaseController",
 		"sap/ui/model/json/JSONModel",
 		"sap/ui/model/Filter",
 		"sap/ui/model/FilterOperator",
 		"sap/m/GroupHeaderListItem",
 		"sap/ui/Device",
-		"masterdetail/model/formatter"
+		"sap/ui/demo/masterdetail/model/formatter"
 	], function (BaseController, JSONModel, Filter, FilterOperator, GroupHeaderListItem, Device, formatter) {
   "use strict";
 
-  return BaseController.extend("masterdetail.controller.Master", {
+  return BaseController.extend("sap.ui.demo.masterdetail.controller.Master", {
 
     formatter: formatter,
 
