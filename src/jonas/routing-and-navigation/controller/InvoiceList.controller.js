@@ -6,6 +6,9 @@ sap.ui.define([
 	"sap/ui/model/FilterOperator"
 ], function (Controller, JSONModel, formatter, Filter, FilterOperator) {
 	"use strict";
+  
+    // JC, $.sap.debug is cluttered
+    var debug = console.log.bind(console, 'DEBUG');
 
 	return Controller.extend("sap.ui.demo.wt.controller.InvoiceList", {
 
