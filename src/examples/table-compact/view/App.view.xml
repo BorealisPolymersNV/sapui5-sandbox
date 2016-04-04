@@ -1,4 +1,4 @@
-<mvc:View controllerName="wt.App" xmlns="sap.ui.table" xmlns:mvc="sap.ui.core.mvc" xmlns:u="sap.ui.unified" xmlns:c="sap.ui.core" xmlns:m="sap.m" >
+<mvc:View controllerName="wt.controller.App" xmlns="sap.ui.table" xmlns:mvc="sap.ui.core.mvc" xmlns:u="sap.ui.unified" xmlns:c="sap.ui.core" xmlns:m="sap.m" class="sapUiSizeCompact">
   <m:Page showHeader="false" enableScrolling="false" class="sapUiContentPadding">
     <m:content>
       <Table rows="{/Products}" title="Products" selectionMode="MultiToggle" visibleRowCount="7">

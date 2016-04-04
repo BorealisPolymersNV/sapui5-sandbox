@@ -3,7 +3,8 @@
 		xmlns:mvc="sap.ui.core.mvc"
 		xmlns:core="sap.ui.core"
 		xmlns="sap.m"
-		xmlns:semantic="sap.m.semantic">
+		xmlns:semantic="sap.m.semantic"
+          class="sapUiSizeCompact"  >
 
 	<semantic:MasterPage
 			id="page"
