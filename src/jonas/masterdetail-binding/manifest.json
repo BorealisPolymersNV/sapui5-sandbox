@@ -103,11 +103,6 @@
           "pattern": "",
           "name": "master",
           "target": ["object", "master"]
-		},
-        {
-          "pattern": "Objects/{objectId}",
-          "name": "object",
-          "target": ["master", "object"]
 		}
       ],
 
@@ -122,18 +117,6 @@
           "viewName": "Detail",
           "viewId": "detail",
           "viewLevel": 2
-        },
-        "detailObjectNotFound": {
-          "viewName": "DetailObjectNotFound",
-          "viewId": "detailObjectNotFound"
-        },
-        "detailNoObjectsAvailable": {
-          "viewName": "DetailNoObjectsAvailable",
-          "viewId": "detailNoObjectsAvailable"
-        },
-        "notFound": {
-          "viewName": "NotFound",
-          "viewId": "notFound"
         }
       }
     }

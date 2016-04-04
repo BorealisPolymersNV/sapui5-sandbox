@@ -1,0 +1,18 @@
+<mvc:View controllerName="masterdetail.controller.Master" xmlns:mvc="sap.ui.core.mvc" xmlns:core="sap.ui.core" xmlns="sap.m" xmlns:semantic="sap.m.semantic">
+
+  <semantic:MasterPage >
+
+    <semantic:content>
+      <!-- For client side filtering add this to the items attribute:  parameters: {operationMode: 'Client'}}" -->
+      <List id="list" items="{path: '/EventIp21Copies'}" >
+
+        <items>
+          <ObjectListItem title="{idEventDef}"  >
+          </ObjectListItem>
+        </items>
+      </List>
+    </semantic:content>
+
+  </semantic:MasterPage>
+
+</mvc:View>

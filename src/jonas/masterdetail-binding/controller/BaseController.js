@@ -25,14 +25,14 @@ sap.ui.define([
 
     // returns {sap.ui.model.Model} the model instance
     getModel: function (sName) {
-      console.debug('BaseController.js:getModel:',sName);
+      console.debug('BaseController.js:getModel:', sName);
 
       return this.getView().getModel(sName);
     },
 
     // returns {sap.ui.mvc.View} the view instance
     setModel: function (oModel, sName) {
-      console.debug('BaseController.js:setModel', oModel, sName);
+      console.debug('BaseController.js:setModel:',oModel, sName);
 
       return this.getView().setModel(oModel, sName);
     },

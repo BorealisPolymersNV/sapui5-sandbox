@@ -54,7 +54,7 @@ sap.ui.define([
     // A bound list should be passed in here. Should be done, before the list has received its initial data 
     // from the server. May only be invoked once per ListSelector instance.
     setBoundMasterList: function (oList) {
-      console.debug('ListSelector.js:setBoundMasterList');
+      console.debug('ListSelector.js:setBoundMasterList:', oList);
 
       this._oList = oList;
       this._fnResolveListHasBeenSet(oList);

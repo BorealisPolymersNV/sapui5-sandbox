@@ -27,7 +27,6 @@ sap.ui.define([
         oViewModel.setProperty("/delay", iOriginalBusyDelay);
       };
 
-      console.debug('App.controller.js.onInit', this.getOwnerComponent().getModel());
       this.getOwnerComponent().getModel().metadataLoaded()
         .then(fnSetAppNotBusy);
 

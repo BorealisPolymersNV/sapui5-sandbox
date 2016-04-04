@@ -1,7 +1,4 @@
-<!-- controllerName="wt.controller.App" -->
-
 <mvc:View
-	
 	xmlns="sap.m"
 	xmlns:mvc="sap.ui.core.mvc"
 	displayBlock="true">

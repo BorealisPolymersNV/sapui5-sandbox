@@ -25,7 +25,7 @@ sap.ui.define([
 
     // returns {sap.ui.model.Model} the model instance
     getModel: function (sName) {
-      console.debug('BaseController.js:getModel');
+      console.debug('BaseController.js:getModel:', sName);
 
       return this.getView().getModel(sName);
     },
