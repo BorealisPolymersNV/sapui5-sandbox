@@ -1,4 +1,5 @@
-<mvc:View controllerName="myCompany.myApp.controller.Worklist" xmlns:mvc="sap.ui.core.mvc" xmlns:semantic="sap.m.semantic" xmlns="sap.m">
+<mvc:View controllerName="myCompany.myApp.controller.Worklist" xmlns:mvc="sap.ui.core.mvc" xmlns:semantic="sap.m.semantic" xmlns="sap.m" xmlns:f="sap.ui.layout.form" xmlns:core="sap.ui.core">
+
   <semantic:FullscreenPage id="page" navButtonPress="onNavBack" showNavButton="false" title="{i18n>worklistViewTitle}">
     <semantic:content>
       <!-- <IconTabBar id="iconTabBar" select="onQuickFilter" expandable="false" applyContentPadding="false">
@@ -12,76 +13,94 @@
       </IconTabBar> -->
 
       <!-- Event Data -->
-      <Table id="table" busyIndicatorDelay="{worklistView>/tableBusyDelay}" class="sapUiResponsiveMargin sapUiNoMarginTop" growing="true" growingScrollToLoad="true" noDataText="{worklistView>/tableNoDataText}" updateFinished="onUpdateFinished" width="auto" mode="MultiSelect" items="{path: '/Objects'}">
-        <headerToolbar>
-          <Toolbar>
-            <Title id="tableHeader" text="{worklistView>/worklistTableTitle0}" />
-            <ToolbarSpacer/>
-            <!-- <SearchField id="searchField" search="onSearch" tooltip="{i18n>worklistSearchTooltip}" width="auto" /> -->
-          </Toolbar>
-        </headerToolbar>
-        <columns>
-          <Column id="typeColumn">
-            <Text id="typeColumnTitle" text="{i18n>TableTypeColumnTitle}" />
-          </Column>
-          <Column id="fromColumn" demandPopin="false" minScreenWidth="Tablet">
-            <Text text="{i18n>TableFromColumnTitle}" />
-          </Column>
-          <Column id="toColumn" demandPopin="false" minScreenWidth="Tablet">
-            <Text text="{i18n>TableToColumnTitle}" />
-          </Column>
+      <VBox class="sapUiSmallMargin">
+        <Table id="table" busyIndicatorDelay="{worklistView>/tableBusyDelay}" class="sapUiResponsiveMargin sapUiNoMarginTop sapUiSizeCompact" growing="true" growingScrollToLoad="true" noDataText="{worklistView>/tableNoDataText}" updateFinished="onUpdateFinished" width="auto" mode="MultiSelect" items="{path: '/Objects'}">
+          <headerToolbar>
+            <Toolbar>
+              <Title id="tableHeader" text="{worklistView>/worklistTableTitle0}" />
+              <ToolbarSpacer/>
+              <!-- <SearchField id="searchField" search="onSearch" tooltip="{i18n>worklistSearchTooltip}" width="auto" /> -->
+            </Toolbar>
+          </headerToolbar>
+          <columns>
+            <Column id="typeColumn">
+              <Text id="typeColumnTitle" text="{i18n>TableTypeColumnTitle}" />
+            </Column>
+            <Column id="fromColumn" demandPopin="false" minScreenWidth="Tablet">
+              <Text text="{i18n>TableFromColumnTitle}" />
+            </Column>
+            <Column id="toColumn" demandPopin="false" minScreenWidth="Tablet">
+              <Text text="{i18n>TableToColumnTitle}" />
+            </Column>
 
-          <!-- Current Shift -->
-          <Column id="shiftMeasuredColumn" hAlign="Right" demandPopin="true" minScreenWidth="Tablet">
-            <Text text="{i18n>TableShiftMeasuredColumnTitle}" />
-          </Column>
-          <Column id="shiftReportedColumn" demandPopin="true" minScreenWidth="Tablet" hAlign="Right">
-            <Text text="{i18n>TableShiftReportedColumnTitle}" />
-          </Column>
-          <Column id="shiftDiffColumn" hAlign="Right">
-            <Text text="{i18n>TableShiftDiffColumnTitle}" />
-          </Column>
+            <!-- Current Shift -->
+            <Column id="shiftMeasuredColumn" hAlign="Right" demandPopin="true" minScreenWidth="Tablet">
+              <Text text="{i18n>TableShiftMeasuredColumnTitle}" />
+            </Column>
+            <Column id="shiftReportedColumn" demandPopin="true" minScreenWidth="Tablet" hAlign="Right">
+              <Text text="{i18n>TableShiftReportedColumnTitle}" />
+            </Column>
+            <Column id="shiftDiffColumn" hAlign="Right">
+              <Text text="{i18n>TableShiftDiffColumnTitle}" />
+            </Column>
 
-          <!-- Total -->
-          <Column id="totMeasuredColumn" hAlign="Right" demandPopin="true" minScreenWidth="Tablet">
-            <Text text="{i18n>TableTotMeasuredColumnTitle}" />
-          </Column>
-          <Column id="totReportedColumn" demandPopin="true" minScreenWidth="Tablet" hAlign="Right">
-            <Text text="{i18n>TableTotReportedColumnTitle}" />
-          </Column>
-          <Column id="totDiffColumn" hAlign="Right">
-            <Text text="{i18n>TableTotDiffColumnTitle}" />
-          </Column>
-        </columns>
-        <items>
-          <ColumnListItem press="onPress" type="Navigation">
-            <cells>
-              <ObjectIdentifier id="EventIP21Copy_idIP21Event" title="{EventType_name}" text="{EventReason_name}" />
-              <Text text="{EventIP21Copy_timeStart}" />
-              <Text text="{EventIP21Copy_timeEnd}" />
+            <!-- Total -->
+            <Column id="totMeasuredColumn" hAlign="Right" demandPopin="true" minScreenWidth="Tablet">
+              <Text text="{i18n>TableTotMeasuredColumnTitle}" />
+            </Column>
+            <Column id="totReportedColumn" demandPopin="true" minScreenWidth="Tablet" hAlign="Right">
+              <Text text="{i18n>TableTotReportedColumnTitle}" />
+            </Column>
+            <Column id="totDiffColumn" hAlign="Right">
+              <Text text="{i18n>TableTotDiffColumnTitle}" />
+            </Column>
 
-              <!-- Current Shift -->
-              <ObjectNumber number="{
+            <Column id="reasonColumn" hAlign="Left">
+              <Text text="{i18n>TableReasonColumnTitle}" />
+            </Column>
+          </columns>
+          <items>
+            <ColumnListItem press="onPress" type="Navigation">
+              <cells>
+                <ObjectIdentifier id="EventIP21Copy_idIP21Event" title="{EventType_name}" />
+                <Text text="{EventIP21Copy_timeStart}" />
+                <Text text="{EventIP21Copy_timeEnd}" />
+
+                <!-- Current Shift -->
+                <ObjectNumber number="{
 									path: 'EventPerShift_totMeasured',
 									formatter: '.formatter.numberUnit'
 								}" />
-              <ObjectNumber number="{Calculated_TotalRepQty}" />
-              <ObjectNumber number="{Calculated_TotalDiff}" />
+                <ObjectNumber number="{Calculated_TotalRepQty}" />
+                <ObjectNumber number="{Calculated_TotalDiff}" />
 
-              <!-- Total -->
-              <ObjectNumber number="{
+                <!-- Total -->
+                <ObjectNumber number="{
 									path: 'EventIP21Copy_totMeasured',
 									formatter: '.formatter.numberUnit'
 								}" />
-              <ObjectNumber number="{Calculated_TotalRepQty}" />
-              <ObjectNumber number="{Calculated_TotalDiff}" />
-            </cells>
-          </ColumnListItem>
-        </items>
-      </Table>
+                <ObjectNumber number="{Calculated_TotalRepQty}" />
+                <ObjectNumber number="{Calculated_TotalDiff}" />
+                
+                <Text text="{EventReason_name}" />
+              </cells>
+            </ColumnListItem>
+          </items>
+        </Table>
+
+
+        <f:SimpleForm id="event-form" minWidth="1024" maxContainerCols="2" editable="true" layout="ResponsiveGridLayout" title="Selected event" labelSpanL="1" labelSpanM="1" emptySpanL="1" emptySpanM="1" columnsL="3" columnsM="3" class="editableForm sapUiSizeCompact">
+          <f:content>
+            <Label text="Event data" />
+            <Input description="Type" value="{path:'/Events/1/Type'}" />
+            <Input description="Reason" value="{path:'/Events/1/ReasonType'}" />
+            <Input description="Comment" value="{path:'/Events/1/Comment'}" />
+          </f:content>
+        </f:SimpleForm>
+      </VBox>
 
       <!-- Event Details -->
-      <Table id="table2" busyIndicatorDelay="{worklistView>/tableBusyDelay}" class="sapUiResponsiveMargin sapUiNoMarginTop" growing="true" growingScrollToLoad="true" noDataText="{worklistView>/tableNoDataText}" updateFinished="onUpdateFinished" width="auto" mode="MultiSelect" items="{path: '/LineItems'}">
+      <Table id="table2" busyIndicatorDelay="{worklistView>/tableBusyDelay}" class="sapUiResponsiveMargin sapUiNoMarginTop sapUiSizeCompact" growing="true" growingScrollToLoad="true" noDataText="{worklistView>/tableNoDataText}" updateFinished="onUpdateFinished" width="auto" mode="MultiSelect" items="{path: '/LineItems'}">
         <headerToolbar>
           <Toolbar>
             <Title id="tableHeader2" text="{worklistView>/worklistTableTitle}" />
@@ -134,6 +153,33 @@
           </ColumnListItem>
         </items>
       </Table>
+
+      <VBox class="sapUiSmallMargin">
+        <f:SimpleForm id="event-details-form" minWidth="1024" maxContainerCols="3" editable="true" layout="ResponsiveGridLayout" title="Event detail data" labelSpanL="1" labelSpanM="1" emptySpanL="1" emptySpanM="1" columnsL="3" columnsM="3" class="editableForm sapUiSizeCompact">
+          <f:content>
+
+            <Label text="Date/Qty" />
+            <Input description="From" value="{path:'/EventDetails/0/From', type:'sap.ui.model.type.DateTime', formatOptions: {
+  style: 'long', source: { pattern: 'yyyy-MM-dd HH:mm'},  pattern: 'yyyy-MM-dd HH:mm'}}" />
+            <Input description="To" value="{path:'/EventDetails/0/To', type:'sap.ui.model.type.Date', formatOptions: {
+  style: 'long', source: { pattern: 'yyyy-MM-dd HH:mm'},  pattern: 'yyyy-MM-dd HH:mm'}}" />
+
+            <Input description="Quantity" value="{path:'/EventDetails/0/Quantity'}" />
+
+            <Label text="Reason" />
+            <Input description="Reason type" value="{path:'/EventDetails/0/ReasonType'}" />
+            <Input description="Reason sub type" value="{path:'/EventDetails/0/ReasonSubType'}" />
+            <Input description="Equipment" value="{path:'/EventDetails/0/Equipment'}" />
+
+            <Label text="Comment" />
+            <Input value="{path:'/EventDetails/0/Comment'}" />
+            <Label text="Synergi#" />
+            <Input value="{path:'/EventDetails/0/Synergi#'}" />
+
+          </f:content>
+        </f:SimpleForm>
+      </VBox>
+
     </semantic:content>
     <!-- 
     <semantic:sendEmailAction>
