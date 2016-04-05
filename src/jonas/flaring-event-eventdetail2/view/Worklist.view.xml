@@ -1,0 +1,149 @@
+<mvc:View controllerName="myCompany.myApp.controller.Worklist" xmlns:mvc="sap.ui.core.mvc" xmlns:semantic="sap.m.semantic" xmlns="sap.m">
+  <semantic:FullscreenPage id="page" navButtonPress="onNavBack" showNavButton="false" title="{i18n>worklistViewTitle}">
+    <semantic:content>
+      <!-- <IconTabBar id="iconTabBar" select="onQuickFilter" expandable="false" applyContentPadding="false">
+        <items>
+          <IconTabFilter key="all" showAll="true" count="{worklistView>/countAll}" text="{i18n>WorklistFilterProductsAll}" />
+          <IconTabSeparator/>
+          <IconTabFilter key="inStock" icon="sap-icon://message-success" iconColor="Positive" count="{worklistView>/inStock}" text="{i18n>WorklistFilterInStock}" />
+          <IconTabFilter key="shortage" icon="sap-icon://message-warning" iconColor="Critical" count="{worklistView>/shortage}" text="{i18n>WorklistFilterShortage}" />
+          <IconTabFilter key="outOfStock" icon="sap-icon://message-error" iconColor="Negative" count="{worklistView>/outOfStock}" text="{i18n>WorklistFilterOutOfStock}" />
+        </items>
+      </IconTabBar> -->
+
+      <!-- Event Data -->
+      <Table id="table" busyIndicatorDelay="{worklistView>/tableBusyDelay}" class="sapUiResponsiveMargin sapUiNoMarginTop" growing="true" growingScrollToLoad="true" noDataText="{worklistView>/tableNoDataText}" updateFinished="onUpdateFinished" width="auto" mode="MultiSelect" items="{path: '/Objects'}">
+        <headerToolbar>
+          <Toolbar>
+            <Title id="tableHeader" text="{worklistView>/worklistTableTitle0}" />
+            <ToolbarSpacer/>
+            <!-- <SearchField id="searchField" search="onSearch" tooltip="{i18n>worklistSearchTooltip}" width="auto" /> -->
+          </Toolbar>
+        </headerToolbar>
+        <columns>
+          <Column id="typeColumn">
+            <Text id="typeColumnTitle" text="{i18n>TableTypeColumnTitle}" />
+          </Column>
+          <Column id="fromColumn" demandPopin="false" minScreenWidth="Tablet">
+            <Text text="{i18n>TableFromColumnTitle}" />
+          </Column>
+          <Column id="toColumn" demandPopin="false" minScreenWidth="Tablet">
+            <Text text="{i18n>TableToColumnTitle}" />
+          </Column>
+
+          <!-- Current Shift -->
+          <Column id="shiftMeasuredColumn" hAlign="Right" demandPopin="true" minScreenWidth="Tablet">
+            <Text text="{i18n>TableShiftMeasuredColumnTitle}" />
+          </Column>
+          <Column id="shiftReportedColumn" demandPopin="true" minScreenWidth="Tablet" hAlign="Right">
+            <Text text="{i18n>TableShiftReportedColumnTitle}" />
+          </Column>
+          <Column id="shiftDiffColumn" hAlign="Right">
+            <Text text="{i18n>TableShiftDiffColumnTitle}" />
+          </Column>
+
+          <!-- Total -->
+          <Column id="totMeasuredColumn" hAlign="Right" demandPopin="true" minScreenWidth="Tablet">
+            <Text text="{i18n>TableTotMeasuredColumnTitle}" />
+          </Column>
+          <Column id="totReportedColumn" demandPopin="true" minScreenWidth="Tablet" hAlign="Right">
+            <Text text="{i18n>TableTotReportedColumnTitle}" />
+          </Column>
+          <Column id="totDiffColumn" hAlign="Right">
+            <Text text="{i18n>TableTotDiffColumnTitle}" />
+          </Column>
+        </columns>
+        <items>
+          <ColumnListItem press="onPress" type="Navigation">
+            <cells>
+              <ObjectIdentifier id="EventIP21Copy_idIP21Event" title="{EventType_name}" text="{EventReason_name}" />
+              <Text text="{EventIP21Copy_timeStart}" />
+              <Text text="{EventIP21Copy_timeEnd}" />
+
+              <!-- Current Shift -->
+              <ObjectNumber number="{
+									path: 'EventPerShift_totMeasured',
+									formatter: '.formatter.numberUnit'
+								}" />
+              <ObjectNumber number="{Calculated_TotalRepQty}" />
+              <ObjectNumber number="{Calculated_TotalDiff}" />
+
+              <!-- Total -->
+              <ObjectNumber number="{
+									path: 'EventIP21Copy_totMeasured',
+									formatter: '.formatter.numberUnit'
+								}" />
+              <ObjectNumber number="{Calculated_TotalRepQty}" />
+              <ObjectNumber number="{Calculated_TotalDiff}" />
+            </cells>
+          </ColumnListItem>
+        </items>
+      </Table>
+
+      <!-- Event Details -->
+      <Table id="table2" busyIndicatorDelay="{worklistView>/tableBusyDelay}" class="sapUiResponsiveMargin sapUiNoMarginTop" growing="true" growingScrollToLoad="true" noDataText="{worklistView>/tableNoDataText}" updateFinished="onUpdateFinished" width="auto" mode="MultiSelect" items="{path: '/LineItems'}">
+        <headerToolbar>
+          <Toolbar>
+            <Title id="tableHeader2" text="{worklistView>/worklistTableTitle}" />
+            <ToolbarSpacer/>
+            <!-- <SearchField id="searchField2" search="onSearch" tooltip="{i18n>worklistSearchTooltip}" width="auto" /> -->
+          </Toolbar>
+        </headerToolbar>
+        <columns>
+          <Column id="shiftColumn">
+            <Text id="shiftColumnTitle" text="{i18n>DetailsTableShiftColumnTitle}" />
+          </Column>
+          <Column id="detailsFromColumn" demandPopin="false" minScreenWidth="Tablet">
+            <Text text="{i18n>DetailsTableFromColumnTitle}" />
+          </Column>
+          <Column id="detailsToColumn" hAlign="Right" demandPopin="true" minScreenWidth="Tablet">
+            <Text text="{i18n>DetailsTableToColumnTitle}" />
+          </Column>
+          <Column id="detailsClassified" demandPopin="true" minScreenWidth="Tablet" hAlign="Right">
+            <Text text="{i18n>DetailsTableClassifiedColumnTitle}" />
+          </Column>
+          <Column id="detailsEventReason" hAlign="Left">
+            <Text text="{i18n>DetailsTableEventReasonTitle}" />
+          </Column>
+          <Column id="detailsEventSubReason" hAlign="Left">
+            <Text text="{i18n>DetailsTableEventSubReasonTitle}" />
+          </Column>
+          <Column id="detailsComment" hAlign="Left">
+            <Text text="{i18n>DetailsTableCommentTitle}" />
+          </Column>
+          <Column id="detailsEquipment" hAlign="Left">
+            <Text text="{i18n>DetailsTableEquipmentTitle}" />
+          </Column>
+        </columns>
+        <items>
+          <ColumnListItem press="onPress" type="Navigation">
+            <cells>
+              <ObjectIdentifier id="EventDetail_idEventDetail" title="{ShiftData_Shift}" />
+              <Text text="{EventDetail_timeStart}" />
+              <Text text="{EventDetail_timeEnd}" />
+              <ObjectNumber number="{
+									path: 'EventDetail_classified',
+									formatter: '.formatter.numberUnit'
+								}" />
+              <Text text="{EventReason_name}" />
+              <Text text="{EventSubReason_name}" />
+              <Text text="{EventDetail_Comment}" />
+              <Text text="{Equipment_Description}" />
+
+            </cells>
+          </ColumnListItem>
+        </items>
+      </Table>
+    </semantic:content>
+    <!-- 
+    <semantic:sendEmailAction>
+      <semantic:SendEmailAction id="shareEmail" press="onShareEmailPress" />
+    </semantic:sendEmailAction>
+    <semantic:positiveAction>
+      <semantic:PositiveAction text="{i18n>TableProductsReorder}" press="onUpdateStockObjects" />
+    </semantic:positiveAction>
+    <semantic:negativeAction>
+      <semantic:NegativeAction text="{i18n>TableProductsUnlist}" press="onUnlistObjects" />
+    </semantic:negativeAction> -->
+  </semantic:FullscreenPage>
+</mvc:View>
