@@ -1,0 +1,50 @@
+var rjs = require('gulp-requirejs');
+var del = require('del');
+var gulp = require('gulp');
+var uglify = require('gulp-uglify');
+var concat = require('gulp-concat');
+var gulpCopy = require('gulp-copy');
+
+var dest = 'dist';
+
+gulp.task('clean', function () {
+  return del([dest]);
+});
+
+gulp.task('compile', function() {
+  return gulp.src(['Component.js', 'controller/*.js', 'model/*.js', 'localService/*.js'])
+    .pipe(concat('index.js'))
+    .pipe(uglify())
+    .pipe(gulp.dest(dest));
+});
+
+gulp.task('requirejs', function() {
+    rjs({
+        baseUrl: './main/index.js',
+        out: 'index.js',
+    })
+    .pipe(gulp.dest(dest)); 
+});
+
+gulp.task('copy-html', function() {
+  return gulp.src('test/mockServer.html')
+    .pipe(gulp.dest(dest + '/test'));
+});
+
+gulp.task('copy-xml', function() {
+  return gulp.src('view/*.xml')
+    .pipe(gulp.dest(dest + '/view'));
+});
+
+gulp.task('copy-i18n', function() {
+  return gulp.src('i18n/*.*')
+    .pipe(gulp.dest(dest + '/i18n'));
+});
+
+gulp.task('copy-localService', function() {
+  return gulp.src(['localService/*.xml', 'localService/**/*.json'])
+    .pipe(gulp.dest(dest + '/localService'));
+});
+
+gulp.task('default', ['requirejs', 'copy-html', 'copy-xml', 'copy-i18n', 'copy-localService']);
+

@@ -1,0 +1,26 @@
+{
+  "name": "packaged-app",
+  "version": "0.0.1",
+  "description": "Test to package Openui5 app",
+  "main": "dist/index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Jonas Colmsjö",
+  "license": "UNLICENSED",
+  "dependencies": {
+    "del": "^2.2.0",
+    "gulp": "^3.9.1",
+    "gulp-concat": "^2.6.0",
+    "gulp-copy": "0.0.2",
+    "gulp-docco": "0.0.4",
+    "gulp-if": "^2.0.0",
+    "gulp-pretty-data": "^0.1.1",
+    "gulp-requirejs": "*",
+    "gulp-uglify": "^1.5.3",
+    "gulp-ui5-preload": "^1.2.0"
+  }
+}
