@@ -1,6 +1,7 @@
 // Using: https://github.com/geekflyer/gulp-ui5-preload
 
 var del = require('del');
+var zip = require('gulp-zip');
 var gulp = require('gulp');
 var docco = require("gulp-docco");
 var eslint = require('gulp-eslint');
@@ -10,8 +11,15 @@ var ui5preload = require('gulp-ui5-preload');
 var prettydata = require('gulp-pretty-data');
 
 var dest = '../../../mii/sapui5-sandbox/WEB/mockup_no1';
+var destZip = '../../../mii/sapui5-sandbox';
 var doccoDest = '../../../docco/mockups/mockup_no1/';
- 
+
+gulp.task('zip', () => {
+	return gulp.src(dest + '*')
+		.pipe(zip('archive.zip'))
+		.pipe(gulp.dest(destZip));
+});
+
 gulp.task('eslint', function () {
     return gulp.src(['**/*.js','!node_modules/**'])
         .pipe(eslint())
