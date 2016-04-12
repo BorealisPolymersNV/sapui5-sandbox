@@ -33,6 +33,11 @@ gulp.task('clean', function () {
   return del([dest, doccoDest], {force: true});
 });
 
+gulp.task('copy-export-manifest', function() {
+  return gulp.src('../../../ExportManifest.xml')
+    .pipe(gulp.dest(dest));
+});
+
 gulp.task('copy-html', function() {
   return gulp.src('main/index.html')
     .pipe(gulp.dest(dest));
