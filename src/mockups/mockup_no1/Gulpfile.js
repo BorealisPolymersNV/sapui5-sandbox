@@ -16,8 +16,8 @@ var destZip = '../../../mii';
 var doccoDest = '../../../docco/mockups/mockup_no1/';
 
 
-gulp.task('zip', () => {
-	return gulp.src(destZip + '/*')
+gulp.task('zip', ['copy-mii-src'], () => {
+	return gulp.src(destZip + '/**/*')
 		.pipe(zip(zipFile))
 		.pipe(gulp.dest(destZip));
 });
