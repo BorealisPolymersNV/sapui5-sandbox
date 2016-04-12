@@ -6,7 +6,6 @@ var docco = require("gulp-docco");
 var eslint = require('gulp-eslint');
 var gulpif = require('gulp-if');
 var uglify = require('gulp-uglify');
-var jshint = require('gulp-jshint');
 var ui5preload = require('gulp-ui5-preload');
 var prettydata = require('gulp-pretty-data');
 
@@ -22,12 +21,6 @@ gulp.task('eslint', function () {
         .pipe(eslint.failAfterError());
 });
  
-gulp.task('lint', function() {
-  return gulp.src(['Component.js', './controller/*.js', 'localService/*.js'])
-    .pipe(jshint())
-    .pipe(jshint.reporter('default'));
-});
-
 gulp.task('clean', function () {
   return del([dest], 'docco');
 });
@@ -54,7 +47,7 @@ gulp.task('docco', function() {
 });
 
 gulp.task('ui5preload', function(){
-  return gulp.src(['Component.js', 'controller/*.js', 'model/*.js', 'localService/*.js', 'view/*.xml', 'i18n/*.*'])
+  return gulp.src(['Component.js', 'controller/*.js', 'model/*.js', 'view/*.xml', 'i18n/*.*'])
           .pipe(gulpif('**/*.js', uglify()))
           .pipe(gulpif('**/*.xml', prettydata({type:'minify'}))) 
           .pipe(ui5preload({base:'./', namespace:'myCompany.myApp'}))
