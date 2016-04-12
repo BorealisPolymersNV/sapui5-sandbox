@@ -9,8 +9,8 @@ var uglify = require('gulp-uglify');
 var ui5preload = require('gulp-ui5-preload');
 var prettydata = require('gulp-pretty-data');
 
- 
-var dest = 'dist';
+var dest = '../../../mii/sapui5-sandbox/WEB/mockup_no1';
+var doccoDest = '../../../docco/mockups/mockup_no1/';
  
 gulp.task('eslint', function () {
     return gulp.src(['**/*.js','!node_modules/**'])
@@ -22,7 +22,7 @@ gulp.task('eslint', function () {
 });
  
 gulp.task('clean', function () {
-  return del([dest], 'docco');
+  return del([dest, doccoDest], {force: true});
 });
 
 gulp.task('copy-html', function() {
@@ -43,7 +43,7 @@ gulp.task('copy-localService', function() {
 gulp.task('docco', function() {
   gulp.src("./**/*.js")
     .pipe(docco())
-    .pipe(gulp.dest('./docco'))
+    .pipe(gulp.dest(doccoDest))
 });
 
 gulp.task('ui5preload', function(){
