@@ -11,12 +11,14 @@ var ui5preload = require('gulp-ui5-preload');
 var prettydata = require('gulp-pretty-data');
 
 var dest = '../../../mii/sapui5-sandbox/WEB/mockup_no1';
-var destZip = '../../../mii/sapui5-sandbox';
+var zipFile = 'sapui5-sandbox.zip';
+var destZip = '../../../mii';
 var doccoDest = '../../../docco/mockups/mockup_no1/';
 
+
 gulp.task('zip', () => {
-	return gulp.src(dest + '*')
-		.pipe(zip('archive.zip'))
+	return gulp.src(destZip + '/*')
+		.pipe(zip(zipFile))
 		.pipe(gulp.dest(destZip));
 });
 
@@ -30,12 +32,12 @@ gulp.task('eslint', function () {
 });
  
 gulp.task('clean', function () {
-  return del([dest, doccoDest], {force: true});
+  return del([dest, destZip, doccoDest], {force: true});
 });
 
-gulp.task('copy-export-manifest', function() {
-  return gulp.src('../../../ExportManifest.xml')
-    .pipe(gulp.dest(dest));
+gulp.task('copy-mii-src', function() {
+  return gulp.src('../../../mii-src/**/*')
+    .pipe(gulp.dest(destZip));
 });
 
 gulp.task('copy-html', function() {
@@ -68,4 +70,6 @@ gulp.task('ui5preload', function(){
      })
 
 gulp.task('default', ['eslint', 'ui5preload', 'copy-html', 'copy-manifest', 'copy-localService', 'docco']);
+
+gulp.task('mii', ['copy-mii-src', 'zip']);
 
