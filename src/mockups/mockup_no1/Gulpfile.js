@@ -11,12 +11,13 @@ var ui5preload = require('gulp-ui5-preload');
 var prettydata = require('gulp-pretty-data');
 
 var dest = '../../../mii/sapui5-sandbox/WEB/mockup_no1';
+var destResources = '../../../mii/sapui5-sandbox/WEB/resources';
 var zipFile = 'sapui5-sandbox.zip';
 var destZip = '../../../mii';
 var doccoDest = '../../../docco/mockups/mockup_no1/';
 
 
-gulp.task('zip', ['copy-mii-src'], () => {
+gulp.task('zip', ['copy-mii-src', 'copy-resources'], () => {
 	return gulp.src(destZip + '/**/*')
 		.pipe(zip(zipFile))
 		.pipe(gulp.dest(destZip));
@@ -40,8 +41,13 @@ gulp.task('copy-mii-src', function() {
     .pipe(gulp.dest(destZip));
 });
 
+gulp.task('copy-resources', function() {
+  return gulp.src('../../../runtime/resources/**/*')
+    .pipe(gulp.dest(destResources));
+});
+
 gulp.task('copy-html', function() {
-  return gulp.src('main/index.html')
+  return gulp.src('main/*.html')
     .pipe(gulp.dest(dest));
 });
 
@@ -71,5 +77,5 @@ gulp.task('ui5preload', function(){
 
 gulp.task('default', ['eslint', 'ui5preload', 'copy-html', 'copy-manifest', 'copy-localService', 'docco']);
 
-gulp.task('mii', ['copy-mii-src', 'zip']);
+gulp.task('mii', ['zip']);
 
