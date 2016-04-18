@@ -19,11 +19,13 @@ sap.ui.define([
 		 * @override
 		 */
 		init: function() {
+            $.sap.log.setLevel(jQuery.sap.log.Level.WARNING);
+          
 			// call the base component's init function
 			UIComponent.prototype.init.apply(this, arguments);
 
 			// initialize the error handler with the component
-			this._oErrorHandler = new ErrorHandler(this);
+			//this._oErrorHandler = new ErrorHandler(this);
 
 			// set the device model
 			this.setModel(models.createDeviceModel(), "device");
@@ -42,7 +44,7 @@ sap.ui.define([
 		 * @override
 		 */
 		destroy: function() {
-			this._oErrorHandler.destroy();
+			//this._oErrorHandler.destroy();
 			// call the base component's destroy function
 			UIComponent.prototype.destroy.apply(this, arguments);
 		},

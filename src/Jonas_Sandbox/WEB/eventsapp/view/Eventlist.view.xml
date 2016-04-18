@@ -1,6 +1,6 @@
 <mvc:View controllerName="borealis.events.controller.Eventlist" xmlns:mvc="sap.ui.core.mvc" xmlns:semantic="sap.m.semantic" xmlns="sap.m" xmlns:f="sap.ui.layout.form" xmlns:core="sap.ui.core">
 
-  <semantic:FullscreenPage id="page" navButtonPress="onNavBack" showNavButton="false" showHeader="false" showSubHeader="false" showFooter="false" title="{i18n>appTitle}">
+  <semantic:FullscreenPage id="page" navButtonPress="onNavBack" showNavButton="false" showFooter="false" title="{i18n>appTitle}">
     <semantic:content>
 
       <!-- Event Data -->

@@ -10,16 +10,6 @@
 		"applicationVersion": {
 			"version": "1.0.0"
 		},
-		"dataSources": {
-			"mainService": {
-				"uri": "/destinations/northwind/V2/Northwind/Northwind.svc/",
-				"type": "OData",
-				"settings": {
-					"odataVersion": "2.0",
-					"localUri": "localService/metadata.xml"
-				}
-			}
-		},
 		"sourceTemplate": {
 			"id": "sap.ui.ui5-template-plugin.1worklist",
 			"version": "1.30.4"
@@ -66,14 +56,6 @@
 				"type": "sap.ui.model.resource.ResourceModel",
 				"settings": {
 					"bundleName": "borealis.events.i18n.i18n"
-				}
-			},
-			"": {
-				"dataSource": "mainService",
-				"settings": {
-					"metadataUrlParams": {
-						"sap-documentation": "heading"
-					}
 				}
 			}
 		},

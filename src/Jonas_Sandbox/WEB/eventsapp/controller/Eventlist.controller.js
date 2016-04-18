@@ -221,7 +221,7 @@ sap.ui.define([
      */
     _showErrorMessage: function (sMsg) {
       MessageBox.error(sMsg, {
-        styleClass: this.getOwnerComponent().getContentDensityClass()
+        //styleClass: this.getOwnerComponent().getContentDensityClass()
       });
     },
 
