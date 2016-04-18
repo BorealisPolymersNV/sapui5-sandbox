@@ -1,0 +1,27 @@
+{
+  "name": "eventsapp",
+  "description": "ESLB Events module",
+  "main": "index.html",
+  "authors": [
+    "Jonas Colmsjö"
+  ],
+  "license": "UNLICENSED",
+  "homepage": "https://github.com/gizur/eslb",
+  "moduleType": [],
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "openui5-sap.ui.core": "openui5/packaged-sap.ui.core#~1.36.6",
+    "openui5-sap.m": "openui5/packaged-sap.m#~1.36.6",
+    "openui5-themelib_sap_bluecrystal": "openui5/packaged-themelib_sap_bluecrystal#~1.36.6",
+    "openui5-sap.ui.layout": "openui5/packaged-sap.ui.layout#~1.36.6",
+    "openui5-sap.ui.unified": "openui5/packaged-sap.ui.unified#^1.36.6",
+    "openui5-sap.ui.table": "openui5/packaged-sap.ui.table#^1.36.6"
+  }
+}

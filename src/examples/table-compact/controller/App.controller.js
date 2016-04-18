@@ -8,6 +8,7 @@ sap.ui.define([
 
     onInit: function (oEvent) {
       var oModel = new JSONModel(jQuery.sap.getModulePath("mockdata", "/products.json"));
+      console.log('DEBUG', (jQuery.sap.getModulePath("mockdata", "/products.json"));
       this.getView().setModel(oModel);
       this.getView().bindElement("/Products");
     },

@@ -11,20 +11,21 @@ var ui5preload = require('gulp-ui5-preload');
 var prettydata = require('gulp-pretty-data');
 var runSequence = require('run-sequence');
 
-var projectName = 'ESLB_Event_UI';
+var projectName = 'Jonas_Sandbox';
+var appName = 'compact-table';
 
-var dest = '../../../../mii/' + projectName + '/WEB/eventsapp';
+var dest = '../../../../mii/' + projectName + '/WEB/'+ appName;
 var miiSrc = '../../../../mii-src/' + projectName + '_project';
 var zipFile = projectName + '.zip';
 var destZip = '../../../../mii';
-var doccoDest = '../../../../docco/' + projectName + '/eventapp/';
-var destResources = '../../../../mii/' + projectName + '/WEB/eventsapp/resources';
+var doccoDest = '../../../../docco/' + projectName + '/' + appName + '/';
+var destResources = '../../../../mii/' + projectName + '/WEB/' + appName + '/resources';
 var destResourcesDev = './resources';
 
 gulp.task('zip2', function(callback) {
-  runSequence('build-clean',
-              'clean-zip',
+  runSequence('clean-zip',
               ['copy-mii-src', 'copy-bower-resources'],
+              'zip',
               callback);
 });
 
@@ -69,6 +70,8 @@ gulp.task('copy-resources', function () {
 gulp.task('copy-bower-resources', function () {
   return gulp.src(['bower_components/openui5-sap.m/resources/**/*', 
                    'bower_components/openui5-sap.ui.core/resources/**/*', 
+                   'bower_components/openui5-sap.ui.unified/resources/**/*', 
+                   'bower_components/openui5-sap.ui.table/resources/**/*', 
                    'bower_components/openui5-themelib_sap_bluecrystal/resources/**/*', 
                    'bower_components/openui5-sap.ui.layout/resources/**/*'])
     .pipe(gulp.dest(destResources));
@@ -77,9 +80,16 @@ gulp.task('copy-bower-resources', function () {
 gulp.task('copy-bower-resources-dev', function () {
   return gulp.src(['bower_components/openui5-sap.m/resources/**/*', 
                    'bower_components/openui5-sap.ui.core/resources/**/*', 
+                   'bower_components/openui5-sap.ui.unified/resources/**/*', 
+                   'bower_components/openui5-sap.ui.table/resources/**/*', 
                    'bower_components/openui5-themelib_sap_bluecrystal/resources/**/*', 
                    'bower_components/openui5-sap.ui.layout/resources/**/*'])
     .pipe(gulp.dest(destResourcesDev));
+});
+
+gulp.task('copy-all-src', function () {
+  return gulp.src(['**/*.*', '!bower_components/**/*.*', '!node_modules/**/*.*'])
+    .pipe(gulp.dest(dest));
 });
 
 gulp.task('copy-html', function () {
@@ -116,7 +126,7 @@ gulp.task('ui5preload', function () {
     })))
     .pipe(ui5preload({
       base: './',
-      namespace: 'borealis.events'
+      namespace: 'wt'
     }))
     .pipe(gulp.dest(dest));
 });
