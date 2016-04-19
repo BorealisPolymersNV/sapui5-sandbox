@@ -28,7 +28,7 @@ gulp.task('zip2', function(callback) {
               callback);
 });
 
-gulp.task('zip', ['copy-mii-src', 'copy-bower-resources'], function () {
+gulp.task('zip', ['copy-mii-src', 'copy-all-src', 'copy-bower-resources'], function () {
   return gulp.src(destZip + '/**/*')
     .pipe(zip(zipFile))
     .pipe(gulp.dest(destZip));

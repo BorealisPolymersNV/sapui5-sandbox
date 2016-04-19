@@ -5,7 +5,7 @@
 
       <!-- Event Data -->
       <VBox class="sapUiSmallMargin">
-        <Table id="table" busyIndicatorDelay="{worklistView>/tableBusyDelay}" class="sapUiResponsiveMargin sapUiNoMarginTop sapUiSizeCompact" growing="true" growingScrollToLoad="true" noDataText="{worklistView>/tableNoDataText}" updateFinished="onUpdateFinished" width="auto" mode="MultiSelect" items="{path: '/Objects'}">
+        <Table id="table" busyIndicatorDelay="{worklistView>/tableBusyDelay}" class="sapUiResponsiveMargin sapUiNoMarginTop sapUiSizeCompact" growing="true" growingScrollToLoad="true" noDataText="{worklistView>/tableNoDataText}" updateFinished="onUpdateFinished" width="auto" mode="MultiSelect" items="{path: '/Events'}">
 
           <columns>
             <Column id="typeColumn">
@@ -47,9 +47,9 @@
           <items>
             <ColumnListItem press="onPress" type="Navigation">
               <cells>
-                <ObjectIdentifier id="EventIP21Copy_idIP21Event" title="{EventType_name}" />
-                <Text text="{EventIP21Copy_timeStart}" />
-                <Text text="{EventIP21Copy_timeEnd}" />
+                <ObjectIdentifier id="EventIP21Copy_idIP21Event" title="{idEventType}" />
+                <Text text="{timeStart}" />
+                <Text text="{timeEnd}" />
 
                 <!-- Current Shift -->
                 <ObjectNumber number="{
@@ -61,13 +61,13 @@
 
                 <!-- Total -->
                 <ObjectNumber number="{
-									path: 'EventIP21Copy_totMeasured',
+									path: 'totMeasured',
 									formatter: '.formatter.numberUnit'
 								}" />
                 <ObjectNumber number="{Calculated_TotalRepQty}" />
                 <ObjectNumber number="{Calculated_TotalDiff}" />
                 
-                <Text text="{EventReason_name}" />
+                <Text text="{eventReasonName}" />
               </cells>
             </ColumnListItem>
           </items>

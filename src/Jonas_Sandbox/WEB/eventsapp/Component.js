@@ -1,3 +1,5 @@
+/* globals $: false */
+
 sap.ui.define([
 	"sap/ui/core/UIComponent",
 	"sap/ui/Device",
@@ -20,7 +22,7 @@ sap.ui.define([
 		 */
 		init: function() {
             $.sap.log.setLevel(jQuery.sap.log.Level.WARNING);
-          
+
 			// call the base component's init function
 			UIComponent.prototype.init.apply(this, arguments);
 
