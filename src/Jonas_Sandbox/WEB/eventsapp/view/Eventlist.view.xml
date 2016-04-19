@@ -53,20 +53,20 @@
 
                 <!-- Current Shift -->
                 <ObjectNumber number="{
-									path: 'EventPerShift_totMeasured',
+									path: 'shiftTotMeasured',
 									formatter: '.formatter.numberUnit'
 								}" />
-                <ObjectNumber number="{Calculated_TotalRepQty}" />
-                <ObjectNumber number="{Calculated_TotalDiff}" />
+                <ObjectNumber number="{shiftTotClassified}" />
+                <ObjectNumber number="{shiftDiff}" />
 
                 <!-- Total -->
                 <ObjectNumber number="{
-									path: 'totMeasured',
+									path: 'eventTotMeasured',
 									formatter: '.formatter.numberUnit'
 								}" />
-                <ObjectNumber number="{Calculated_TotalRepQty}" />
-                <ObjectNumber number="{Calculated_TotalDiff}" />
-                
+                <ObjectNumber number="{eventTotClassified}" />
+                <ObjectNumber number="{eventDiff}" />
+
                 <Text text="{eventReasonName}" />
               </cells>
             </ColumnListItem>
@@ -166,7 +166,7 @@
       </VBox>
 
     </semantic:content>
-    <!-- 
+    <!--
     <semantic:sendEmailAction>
       <semantic:SendEmailAction id="shareEmail" press="onShareEmailPress" />
     </semantic:sendEmailAction>

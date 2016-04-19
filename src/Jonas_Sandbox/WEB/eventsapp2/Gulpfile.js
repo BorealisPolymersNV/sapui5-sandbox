@@ -11,7 +11,7 @@ var ui5preload = require('gulp-ui5-preload');
 var prettydata = require('gulp-pretty-data');
 var runSequence = require('run-sequence');
 
-var projectName = 'Jonas_Sandbox';
+var projectName = 'ESLB_Event_UI';
 
 var dest = '../../../../mii/' + projectName + '/WEB/eventsapp';
 var miiSrc = '../../../../mii-src/' + projectName + '_project';
@@ -22,9 +22,9 @@ var destResources = '../../../../mii/' + projectName + '/WEB/eventsapp/resources
 var destResourcesDev = './resources';
 
 gulp.task('zip2', function(callback) {
-  runSequence('clean-zip',
+  runSequence('build-clean',
+              'clean-zip',
               ['copy-mii-src', 'copy-bower-resources'],
-              'zip',
               callback);
 });
 
@@ -35,12 +35,12 @@ gulp.task('zip', ['copy-mii-src', 'copy-bower-resources'], function () {
 });
 
 gulp.task('eslint', function () {
-  return gulp.src(['**/*.js', '!resources/**', '!bower_components/**', 
+  return gulp.src(['**/*.js', '!resources/**', '!bower_components/**',
                    '!node_modules/**', '!test/**', '!Gulpfile.js'])
     .pipe(eslint())
     .pipe(eslint.format())
-    // To have the process exit with an error code (1) on 
-    // lint error, return the stream and pipe to failAfterError last. 
+    // To have the process exit with an error code (1) on
+    // lint error, return the stream and pipe to failAfterError last.
     .pipe(eslint.failAfterError());
 });
 
@@ -67,17 +67,17 @@ gulp.task('copy-resources', function () {
 });
 
 gulp.task('copy-bower-resources', function () {
-  return gulp.src(['bower_components/openui5-sap.m/resources/**/*', 
-                   'bower_components/openui5-sap.ui.core/resources/**/*', 
-                   'bower_components/openui5-themelib_sap_bluecrystal/resources/**/*', 
+  return gulp.src(['bower_components/openui5-sap.m/resources/**/*',
+                   'bower_components/openui5-sap.ui.core/resources/**/*',
+                   'bower_components/openui5-themelib_sap_bluecrystal/resources/**/*',
                    'bower_components/openui5-sap.ui.layout/resources/**/*'])
     .pipe(gulp.dest(destResources));
 });
 
 gulp.task('copy-bower-resources-dev', function () {
-  return gulp.src(['bower_components/openui5-sap.m/resources/**/*', 
-                   'bower_components/openui5-sap.ui.core/resources/**/*', 
-                   'bower_components/openui5-themelib_sap_bluecrystal/resources/**/*', 
+  return gulp.src(['bower_components/openui5-sap.m/resources/**/*',
+                   'bower_components/openui5-sap.ui.core/resources/**/*',
+                   'bower_components/openui5-themelib_sap_bluecrystal/resources/**/*',
                    'bower_components/openui5-sap.ui.layout/resources/**/*'])
     .pipe(gulp.dest(destResourcesDev));
 });

@@ -1,3 +1,5 @@
+/*eslint consistent-this: ["error", "self"]*/
+
 sap.ui.define([
 	"borealis/events/controller/BaseController",
 	"sap/ui/model/json/JSONModel",
@@ -84,8 +86,8 @@ sap.ui.define([
      * @param {sap.ui.base.Event} oEvent the update finished event
      * @public
      */
-    onUpdateFinished: function (oEvent) {
-      // update the worklist's object counter after the table update
+    _RemoveOnUpdateFinished: function (oEvent) {
+		  // update the worklist's object counter after the table update
       var sTitle,
         oTable = oEvent.getSource(),
         oViewModel = this.getModel("worklistView"),

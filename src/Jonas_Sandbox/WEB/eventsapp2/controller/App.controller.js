@@ -1,3 +1,6 @@
+/* globals $ */
+/*eslint consistent-this: ["error", "self"]*/
+
 sap.ui.define([
 	"borealis/events/controller/BaseController",
 	"sap/ui/model/json/JSONModel"
@@ -20,7 +23,7 @@ sap.ui.define([
             'QueryTemplate': 'ESLB_Event_UI/getEvents',
             'IsTesting': 'T',
             'Content-Type': 'text/json',
-            'Param.1': '19835'
+            'Param.1': '23'
           }
         })
         .done(function (res) {
@@ -28,10 +31,10 @@ sap.ui.define([
             self.getView().setModel(oModel);
             self.getView().bindElement("/Events");
 
-            console.log('DONE', JSON.stringify(res.Rowsets.Rowset[0].Row[0]));
+            console.log('DONE', JSON.stringify(res.Rowsets.Rowset[0].Row));
         })
         .fail(console.log.bind(console, 'ERROR'))
-        .always(console.log.bind(console, 'FINISHED'))
+        .always(console.log.bind(console, 'FINISHED'));
     },
 
 		onInit: function() {
@@ -56,6 +59,8 @@ sap.ui.define([
 
 			// apply content density mode to root view
 			this.getView().addStyleClass(this.getOwnerComponent().getContentDensityClass());
+
+			console.log('MANIFEST', this.getMyConf());
 		}
 	});
 

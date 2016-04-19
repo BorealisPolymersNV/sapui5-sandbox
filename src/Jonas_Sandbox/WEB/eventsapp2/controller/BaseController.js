@@ -1,9 +1,15 @@
 sap.ui.define([
-	"sap/ui/core/mvc/Controller"
-], function(Controller) {
+	"sap/ui/core/mvc/Controller",
+	"borealis.events.Component"
+], function(Controller, Component) {
 	"use strict";
 
 	return Controller.extend("borealis.events.controller.BaseController", {
+		getMyConf: function() {
+			return Component.getMetadata().getManifest().appConfig;
+;
+		},
+
 		/**
 		 * Convenience method for accessing the router.
 		 * @public

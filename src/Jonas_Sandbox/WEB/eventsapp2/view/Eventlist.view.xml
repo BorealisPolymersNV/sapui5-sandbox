@@ -1,0 +1,100 @@
+<mvc:View controllerName="borealis.events.controller.Eventlist" xmlns:mvc="sap.ui.core.mvc" xmlns:semantic="sap.m.semantic" xmlns="sap.m" xmlns:f="sap.ui.layout.form" xmlns:core="sap.ui.core">
+
+  <semantic:FullscreenPage id="page" navButtonPress="onNavBack" showNavButton="false" showFooter="false" title="{i18n>appTitle}">
+    <semantic:content>
+
+      <!-- Event Data -->
+      <VBox class="sapUiSmallMargin">
+        <Table id="table" busyIndicatorDelay="{worklistView>/tableBusyDelay}"
+          class="sapUiResponsiveMargin sapUiNoMarginTop sapUiSizeCompact"
+          growing="false"
+          growingScrollToLoad="true"
+          noDataText="{worklistView>/tableNoDataText}"
+          updateFinished="onUpdateFinished"
+          width="auto"
+          mode="MultiSelect"
+          items="{path: '/Events'}">
+
+          <columns>
+            <Column id="typeColumn">
+              <Text id="typeColumnTitle" text="{i18n>TableTypeColumnTitle}" />
+            </Column>
+            <Column id="fromColumn" demandPopin="false" minScreenWidth="Tablet">
+              <Text text="{i18n>TableFromColumnTitle}" />
+            </Column>
+            <Column id="toColumn" demandPopin="false" minScreenWidth="Tablet">
+              <Text text="{i18n>TableToColumnTitle}" />
+            </Column>
+
+            <!-- Current Shift -->
+            <Column id="shiftMeasuredColumn" hAlign="Right" demandPopin="true" minScreenWidth="Tablet">
+              <Text text="{i18n>TableShiftMeasuredColumnTitle}" />
+            </Column>
+            <Column id="shiftReportedColumn" demandPopin="true" minScreenWidth="Tablet" hAlign="Right">
+              <Text text="{i18n>TableShiftReportedColumnTitle}" />
+            </Column>
+            <Column id="shiftDiffColumn" hAlign="Right">
+              <Text text="{i18n>TableShiftDiffColumnTitle}" />
+            </Column>
+
+            <!-- Total -->
+            <Column id="totMeasuredColumn" hAlign="Right" demandPopin="true" minScreenWidth="Tablet">
+              <Text text="{i18n>TableTotMeasuredColumnTitle}" />
+            </Column>
+            <Column id="totReportedColumn" demandPopin="true" minScreenWidth="Tablet" hAlign="Right">
+              <Text text="{i18n>TableTotReportedColumnTitle}" />
+            </Column>
+            <Column id="totDiffColumn" hAlign="Right">
+              <Text text="{i18n>TableTotDiffColumnTitle}" />
+            </Column>
+
+            <Column id="reasonColumn" hAlign="Left">
+              <Text text="{i18n>TableReasonColumnTitle}" />
+            </Column>
+          </columns>
+          <items>
+            <ColumnListItem press="onPress" type="Navigation">
+              <cells>
+                <ObjectIdentifier id="EventIP21Copy_idIP21Event" title="{idEventType}" />
+                <Text text="{timeStart}" />
+                <Text text="{timeEnd}" />
+
+                <!-- Current Shift -->
+                 <ObjectNumber number="{shiftTotMeasured}" />
+                 <ObjectNumber number="{shiftTotClassified}" />
+                 <ObjectNumber number="{shiftDiff}" />
+
+                  <!-- Total -->
+                 <ObjectNumber number="{eventTotMeasured}" />
+                 <ObjectNumber number="{eventTotClassified}" />
+                 <ObjectNumber number="{eventDiff}" />
+
+              </cells>
+            </ColumnListItem>
+          </items>
+        </Table>
+
+
+        <f:SimpleForm id="event-form" minWidth="1024" maxContainerCols="2" editable="true" layout="ResponsiveGridLayout" title="Selected event" labelSpanL="1" labelSpanM="1" emptySpanL="1" emptySpanM="1" columnsL="3" columnsM="3" class="editableForm sapUiSizeCompact">
+          <f:content>
+            <Label text="Event data" />
+            <Input description="Type" value="{path:'/Events/1/Type'}" />
+            <Input description="Reason" value="{path:'/Events/1/ReasonType'}" />
+            <Input description="Comment" value="{path:'/Events/1/Comment'}" />
+          </f:content>
+        </f:SimpleForm>
+      </VBox>
+
+    </semantic:content>
+    <!--
+    <semantic:sendEmailAction>
+      <semantic:SendEmailAction id="shareEmail" press="onShareEmailPress" />
+    </semantic:sendEmailAction>
+    <semantic:positiveAction>
+      <semantic:PositiveAction text="{i18n>TableProductsReorder}" press="onUpdateStockObjects" />
+    </semantic:positiveAction>
+    <semantic:negativeAction>
+      <semantic:NegativeAction text="{i18n>TableProductsUnlist}" press="onUnlistObjects" />
+    </semantic:negativeAction> -->
+  </semantic:FullscreenPage>
+</mvc:View>
