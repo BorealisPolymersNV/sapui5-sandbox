@@ -1,0 +1,26 @@
+[
+  {
+    "__EVENT": "",
+    "idEventType":"FLAR",
+    "timeStart": "2016-03-08 07:31:00",
+    "timeEnd": "2016-03-08 07:31:00",
+    "shiftTotMeasured":"11",
+    "shiftTotClassified":"12",
+    "shiftDiff":"13",
+    "eventTotMeasured":"21",
+    "eventTotClassified":"22",
+    "eventDiff":"23"
+	},
+  {
+    "__EVENT": "",
+    "idEventType":"FLAR",
+    "timeStart": "2016-03-08 07:31:00",
+    "timeEnd": "2016-03-08 07:31:00",
+    "shiftTotMeasured":"11",
+    "shiftTotClassified":"12",
+    "shiftDiff":"13",
+    "eventTotMeasured":"21",
+    "eventTotClassified":"22",
+    "eventDiff":"23"
+  }
+]

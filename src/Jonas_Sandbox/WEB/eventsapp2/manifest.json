@@ -103,8 +103,5 @@
 				}
 			}
 		}
-	},
-	"appConfig": {
-		"useMockData": true
 	}
 }

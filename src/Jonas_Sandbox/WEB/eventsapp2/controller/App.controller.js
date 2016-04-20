@@ -1,40 +1,30 @@
-/* globals $ */
 /*eslint consistent-this: ["error", "self"]*/
 
 sap.ui.define([
 	"borealis/events/controller/BaseController",
-	"sap/ui/model/json/JSONModel"
-], function(BaseController, JSONModel) {
+	"sap/ui/model/json/JSONModel",
+	"borealis/events/util/Common"
+], function(BaseController, JSONModel, Common) {
 	"use strict";
 
 	return BaseController.extend("borealis.events.controller.App", {
 
    _loadEvents: function () {
       var self = this;
-      var path = '/XMII/Illuminator';
 
-     console.log('Performing ajax call', path + '?'); // + params);
+			var params = {
+				'Param.1': '23'
+			};
 
-      $.ajax({
-          url: path,
-          contentType: 'text/json',
-          method: 'GET',
-          data: {
-            'QueryTemplate': 'ESLB_Event_UI/getEvents',
-            'IsTesting': 'T',
-            'Content-Type': 'text/json',
-            'Param.1': '23'
-          }
-        })
-        .done(function (res) {
-           var oModel = new JSONModel({Events: res.Rowsets.Rowset[0].Row});
-            self.getView().setModel(oModel);
-            self.getView().bindElement("/Events");
+      var done = function (res) {
+         var oModel = new JSONModel({Events: res.Rowsets.Rowset[0].Row});
+          self.getView().setModel(oModel);
+          self.getView().bindElement("/Events");
 
-            console.log('DONE', JSON.stringify(res.Rowsets.Rowset[0].Row));
-        })
-        .fail(console.log.bind(console, 'ERROR'))
-        .always(console.log.bind(console, 'FINISHED'));
+          Common.debug('DONE', JSON.stringify(res.Rowsets.Rowset[0].Row));
+      };
+
+			Common.xhr('getEvents', 'GET', params, done);
     },
 
 		onInit: function() {
@@ -60,7 +50,7 @@ sap.ui.define([
 			// apply content density mode to root view
 			this.getView().addStyleClass(this.getOwnerComponent().getContentDensityClass());
 
-			console.log('MANIFEST', this.getMyConf());
+			Common.debug('MANIFEST', this.getMyConf());
 		}
 	});
 

@@ -70,7 +70,8 @@ gulp.task('copy-bower-resources', function () {
   return gulp.src(['bower_components/openui5-sap.m/resources/**/*',
                    'bower_components/openui5-sap.ui.core/resources/**/*',
                    'bower_components/openui5-themelib_sap_bluecrystal/resources/**/*',
-                   'bower_components/openui5-sap.ui.layout/resources/**/*'])
+                   'bower_components/openui5-sap.ui.layout/resources/**/*',
+                   'bower_components/lodash/dist/**/*'])
     .pipe(gulp.dest(destResources));
 });
 
@@ -78,7 +79,8 @@ gulp.task('copy-bower-resources-dev', function () {
   return gulp.src(['bower_components/openui5-sap.m/resources/**/*',
                    'bower_components/openui5-sap.ui.core/resources/**/*',
                    'bower_components/openui5-themelib_sap_bluecrystal/resources/**/*',
-                   'bower_components/openui5-sap.ui.layout/resources/**/*'])
+                   'bower_components/openui5-sap.ui.layout/resources/**/*',
+                   'bower_components/lodash/dist/**/*'])
     .pipe(gulp.dest(destResourcesDev));
 });
 
@@ -126,4 +128,6 @@ gulp.task('ui5preload', function () {
     .pipe(gulp.dest(dest));
 });
 
-gulp.task('default', ['eslint', 'ui5preload', 'copy-html', 'copy-manifest', 'copy-localService', 'copy-i18n', 'copy-bower-resources-dev', 'docco']);
+gulp.task('default', ['eslint', 'ui5preload', 'copy-html', 'copy-manifest',
+                      'copy-localService', 'copy-i18n',
+                      'copy-bower-resources-dev', 'docco']);
