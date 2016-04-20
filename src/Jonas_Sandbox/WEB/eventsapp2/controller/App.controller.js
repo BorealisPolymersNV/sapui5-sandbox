@@ -1,4 +1,5 @@
 /*eslint consistent-this: ["error", "self"]*/
+/* eslint no-warning-comments: 0 */
 
 sap.ui.define([
 	"borealis/events/controller/BaseController",
@@ -17,11 +18,27 @@ sap.ui.define([
 			};
 
       var done = function (res) {
-         var oModel = new JSONModel({Events: res.Rowsets.Rowset[0].Row});
+         var oModel = new JSONModel({Events: res});
           self.getView().setModel(oModel);
           self.getView().bindElement("/Events");
 
-          Common.debug('DONE', JSON.stringify(res.Rowsets.Rowset[0].Row));
+					var oViewModel,
+						fnSetAppNotBusy,
+						iOriginalBusyDelay = self.getView().getBusyIndicatorDelay();
+
+					oViewModel = new JSONModel({
+						busy: true,
+						delay: 0
+					});
+					self.setModel(oViewModel, "appView");
+
+					fnSetAppNotBusy = function() {
+						oViewModel.setProperty("/busy", false);
+						oViewModel.setProperty("/delay", iOriginalBusyDelay);
+					};
+
+					// TODO: should be attached to something indicating the the data has been loaded
+					fnSetAppNotBusy();
       };
 
 			Common.xhr('getEvents', 'GET', params, done);
@@ -30,27 +47,8 @@ sap.ui.define([
 		onInit: function() {
 			this._loadEvents();
 
-			var oViewModel,
-				fnSetAppNotBusy,
-				iOriginalBusyDelay = this.getView().getBusyIndicatorDelay();
-
-			oViewModel = new JSONModel({
-				busy: true,
-				delay: 0
-			});
-			this.setModel(oViewModel, "appView");
-
-			fnSetAppNotBusy = function() {
-				oViewModel.setProperty("/busy", false);
-				oViewModel.setProperty("/delay", iOriginalBusyDelay);
-			};
-
-			fnSetAppNotBusy();
-
 			// apply content density mode to root view
 			this.getView().addStyleClass(this.getOwnerComponent().getContentDensityClass());
-
-			Common.debug('MANIFEST', this.getMyConf());
 		}
 	});
 

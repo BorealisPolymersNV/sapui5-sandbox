@@ -8,7 +8,8 @@ borealis.events.util.Common = {
 
 	// TODO: move to separate file? (manifest as one alternative)
 	appConfig: {
-		useMockData: true
+		useMockData: true,
+		miiPath:  '/XMII/Illuminator'
 	},
 
 	// This makes it possible to control the logging level for our classes
@@ -28,10 +29,11 @@ borealis.events.util.Common = {
 
 			var path = jQuery.sap.getModulePath('') + '/../localService/mockdata/' + miiObj + '.json';
 			$.getJSON(path, function(jsonArray){
-				doneCB({Rowsets: {
+				/*doneCB({Rowsets: {
 					Rowset: [ {Row: jsonArray } ]
 					}
-				});
+				});*/
+				doneCB(jsonArray);
 			})
 			.fail(console.log.bind(console, 'ERROR'));
 
@@ -44,19 +46,18 @@ borealis.events.util.Common = {
 			'Content-Type': 'text/json'
 		});
 
-	  var path = '/XMII/Illuminator';
-
-		this.debug('Common:xhr:Performing ajax call', path + '?');
+		this.debug('Common:xhr:Performing ajax call');
 
 		 $.ajax({
-				 url: path,
+				 url: this.appConfig.miiPath,
 				 contentType: 'text/json',
 				 method: method,
 				 data: data
 			 })
 			 .done(function (res) {
           self.debug('ajax result:', res);
-					doneCB(res);
+					doneCB(res.Rowsets.Rowset[0].Row);
+					//doneCB(res);
 			 })
 			 .fail(console.log.bind(console, 'ERROR'))
 			 .always(console.log.bind(console, 'FINISHED'));
