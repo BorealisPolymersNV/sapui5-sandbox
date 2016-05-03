@@ -1,13 +1,17 @@
 #!/usr/bin/env node
 
-var http = require('http');
 var fs = require('fs');
+var url=require('url');
 var path = require('path');
+var http = require('http');
+var querystring = require('querystring');
 
 http.createServer(function(request, response) {
-  console.log('request starting...');
 
-  var filePath = '.' + request.url;
+  var parsedUrl = url.parse(request.url);
+  console.log('request starting...', parsedUrl.pathname);
+
+  var filePath = '.' + parsedUrl.pathname; //request.url;
   if (filePath == './')
     filePath = './index.html';
 
